@@ -25,8 +25,24 @@ SECRET_KEY = 'django-insecure-$cr*b^(kw6s=@&-o^#^ehn_#q%!r-u1#)-)y0c86n))-47#v2j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-parduckids-milestonepro-8qpgd972xo7.ws-eu114.gitpod.io']
+ALLOWED_HOSTS = [
+    '8000-parduckids-milestonepro-8qpgd972xo7.ws-eu114.gitpod.io',
+    '8000-parduckids-milestonepro-rl583zc92m7.ws-eu114.gitpod.io',
+    ]
+# Add CSRF trusted link
+CSRF_TRUSTED_ORIGINS = ['https://8000-parduckids-milestonepro-rl583zc92m7.ws-eu114.gitpod.io']
 
+SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -37,6 +53,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    # The following apps are required for the authentication:
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    
 ]
 
 MIDDLEWARE = [
@@ -47,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'subsurface.urls'
