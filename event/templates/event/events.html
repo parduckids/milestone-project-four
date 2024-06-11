@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% load static %}
+<!-- Add title -->
+{% block extra_title %} Home {% endblock %}
+
+<!-- Extend base template with content -->
+{% block content %}
+<!-- Page Content -->
+<div class="container mt-5 sexy-font">
+    <h1>Upcoming Events</h1>
+</div>
+
+<!-- Inline Filter Menu and Calendar -->
+<div class="container mt-4">
+    <form class="d-flex justify-content-between">
+        <div class="d-flex flex-column flex-md-row">
+            <div class="me-3 mb-2 mb-md-0">
+                <label for="eventType" class="form-label">Event Type</label>
+                <select class="form-select" id="eventType">
+                    <option selected>All</option>
+                    <option value="house">House</option>
+                    <option value="noise">Noise</option>
+                    <option value="experimental">Experimental</option>
+                    <option value="techno">Techno</option>
+                </select>
+            </div>
+            <div class="me-3 mb-2 mb-md-0">
+                <label for="eventDate" class="form-label">Date</label>
+                <input type="date" class="form-control" id="eventDate">
+            </div>
+            <div class="me-3 mb-2 mb-md-0">
+                <label for="eventCity" class="form-label">City</label>
+                <select class="form-select" id="eventCity">
+                    <option selected>All</option>
+                    <option value="bristol">Bristol</option>
+                    <option value="london">London</option>
+                    <option value="birmingham">Birmingham</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-warning align-self-end">Apply Filters</button>
+    </form>
+</div>
+
+<!-- Events List -->
+<div class="container mt-5">
+    <h2>All Events:</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
+        <div class="col">
+            <div class="position-relative square-container">
+                <div class="date-overlay p-2">Today</div>
+                <img src="https://f4.bcbits.com/img/a1615394167_10.jpg" class="square-image" alt="Event Image">
+            </div>
+            <div class="card-body mt-2 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="badge bg-success text-decoration-none mb-2 me-2">House</a>
+                    <p class="card-text mb-1">Club XYZ</p>
+                </div>
+                <h5 class="card-title">Underground Beats</h5>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
+                    Tickets</a>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
+                    Tell me more</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="position-relative square-container">
+                <div class="date-overlay p-2">Tomorrow</div>
+                <img src="https://i0.wp.com/2.bp.blogspot.com/-mTM5WA7QcPM/XNhHe0uKnoI/AAAAAAAAIsI/AVizMUSs8wcJivsJtBTJUYT7mgqE2BPmQCLcBGAs/s1600/MORD061%2BArtwork.jpg?ssl=1"
+                    class="square-image" alt="Event Image">
+            </div>
+            <div class="card-body mt-2 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="badge bg-warning text-decoration-none mb-2">Noise</a>
+                    <p class="card-text mb-1">Club XYZ</p>
+                </div>
+                <h5 class="card-title">Underground Beats</h5>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
+                    Tickets</a>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
+                    Tell me more</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="position-relative square-container">
+                <div class="date-overlay p-2">Tomorrow</div>
+                <img src="https://media.hardwax.com/images/78270_01big.jpg" class="square-image" alt="Event Image">
+            </div>
+            <div class="card-body mt-2 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="badge bg-danger text-decoration-none mb-2">Experimental</a>
+                    <p class="card-text mb-1">Club XYZ</p>
+                </div>
+                <h5 class="card-title">Underground Beats</h5>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
+                    Tickets</a>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
+                    Tell me more</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="position-relative square-container">
+                <div class="date-overlay p-2">Next Week</div>
+                <img src="https://i1.sndcdn.com/artworks-TXheZWgrr3IA74yC-XWzpzQ-t500x500.jpg" class="square-image"
+                    alt="Event Image">
+            </div>
+            <div class="card-body mt-2 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="badge bg-dark text-decoration-none mb-2">Techno</a>
+                    <p class="card-text mb-1">Club XYZ</p>
+                </div>
+                <h5 class="card-title">Underground Beats</h5>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
+                    Tickets</a>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
+                    Tell me more</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="position-relative square-container">
+                <div class="date-overlay p-2">Next Week</div>
+                <img src="https://f4.bcbits.com/img/a1615394167_10.jpg" class="square-image" alt="Event Image">
+            </div>
+            <div class="card-body mt-2 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="badge bg-success text-decoration-none mb-2 me-2">House</a>
+                    <p class="card-text mb-1">Club XYZ</p>
+                </div>
+                <h5 class="card-title">Underground Beats</h5>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
+                    Tickets</a>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
+                    Tell me more</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="position-relative square-container">
+                <div class="date-overlay p-2">Next Month</div>
+                <img src="https://i0.wp.com/2.bp.blogspot.com/-mTM5WA7QcPM/XNhHe0uKnoI/AAAAAAAAIsI/AVizMUSs8wcJivsJtBTJUYT7mgqE2BPmQCLcBGAs/s1600/MORD061%2BArtwork.jpg?ssl=1"
+                    class="square-image" alt="Event Image">
+            </div>
+            <div class="card-body mt-2 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="badge bg-warning text-decoration-none mb-2">Noise</a>
+                    <p class="card-text mb-1">Club XYZ</p>
+                </div>
+                <h5 class="card-title">Underground Beats</h5>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
+                    Tickets</a>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
+                    Tell me more</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="position-relative square-container">
+                <div class="date-overlay p-2">Next Month</div>
+                <img src="https://media.hardwax.com/images/78270_01big.jpg" class="square-image" alt="Event Image">
+            </div>
+            <div class="card-body mt-2 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="badge bg-danger text-decoration-none mb-2">Experimental</a>
+                    <p class="card-text mb-1">Club XYZ</p>
+                </div>
+                <h5 class="card-title">Underground Beats</h5>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
+                    Tickets</a>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
+                    Tell me more</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="position-relative square-container">
+                <div class="date-overlay p-2">Next Month</div>
+                <img src="https://i1.sndcdn.com/artworks-TXheZWgrr3IA74yC-XWzpzQ-t500x500.jpg" class="square-image"
+                    alt="Event Image">
+            </div>
+            <div class="card-body mt-2 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="badge bg-dark text-decoration-none mb-2">Techno</a>
+                    <p class="card-text mb-1">Club XYZ</p>
+                </div>
+                <h5 class="card-title">Underground Beats</h5>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
+                    Tickets</a>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
+                    Tell me more</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
