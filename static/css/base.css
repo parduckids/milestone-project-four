@@ -1,0 +1,44 @@
+/* static/css/base.css */
+html,
+body {
+    background-color: #28282B;
+    color: white;
+    font-family: "Cutive Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+
+}
+
+.sexy-font {
+    font-family: "Major Mono Display", monospace !important;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+}
+
+h1 {
+    font-size: 2.2em !important;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+/* Transparent Navbar */
+.navbar {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #fff;
+}
+
+.nav-link {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #FFC007
+}
+
