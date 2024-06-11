@@ -30,15 +30,124 @@ h1 {
 
 .navbar-brand {
     font-weight: bold;
-    color: #fff;
+    color: #fff !important;
 }
 
 .nav-link {
-    color: #fff;
+    color: #fff !important;
     transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #FFC007
+    color: #FFC007 !important;
+}
+
+
+
+
+
+/* Event Cards */
+/* Square Image Container */
+.square-container {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Square Image */
+.square-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.date-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: black;
+    color: #fff;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+/* Other styling */
+.card-body {
+    background-color: transparent
+}
+.badge:hover{
+    color: black !important;
+}
+.card-text {
+    font-size: 0.8em;
+}
+
+.badge {
+    font-size: 1em !important;
+}
+
+
+
+.container {
+    margin-top: 50px;
+
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.25rem;
+}
+
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+/* Footer */
+footer {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ccc;
+}
+
+footer .btn-outline-light {
+    border-color: #fff;
+    padding: 0.3rem 1rem;
+}
+
+footer .btn-outline-light:hover {
+    background-color: #fff;
+    color: #333 !important;
 }
 
