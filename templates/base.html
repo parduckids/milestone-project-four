@@ -1,4 +1,4 @@
-(% load static %)
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,6 +31,11 @@
   </head>
   <body>
 
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}
+    {% endblock %}
 
     
   </body>
