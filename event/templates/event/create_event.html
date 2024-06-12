@@ -17,53 +17,53 @@
         {% csrf_token %}
         <div class="row">
             <div class="col-md-6 mb-3">
-                <label for="event-name" class="form-label">Event Name</label>
-                <input type="text" class="form-control" id="event-name" name="event_name" required>
+                <label for="event-name" class="form-label">Event Name *</label>
+                <input type="text" class="form-control" id="event-name" name="event_name" placeholder="Name of the event." required>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="event-date" class="form-label">Date</label>
-                <input type="date" class="form-control" id="event-date" name="date" required>
+                <label for="event-date" class="form-label">Date *</label>
+                <input type="date" class="form-control" id="event-date" name="date" placeholder="Select a date." required>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="event-start-time" class="form-label">Start Time</label>
-                <input type="time" class="form-control" id="event-start-time" name="start_time" required>
+                <label for="event-start-time" class="form-label">Start Time *</label>
+                <input type="time" class="form-control" id="event-start-time" name="start_time" placeholder="When the event starts?" required>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="event-end-time" class="form-label">End Time</label>
-                <input type="time" class="form-control" id="event-end-time" name="end_time" required>
+                <label for="event-end-time" class="form-label">End Time *</label>
+                <input type="time" class="form-control" id="event-end-time" name="end_time" placeholder="When the event ends?" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
-                <label for="event-city" class="form-label">City</label>
-                <input type="text" class="form-control" id="event-city" name="city" required>
+                <label for="event-city" class="form-label">City *</label>
+                <input type="text" class="form-control" id="event-city" name="city" placeholder="Enter city." required>
             </div>
             <div class="col-md-6 mb-3">
-                <label for="event-venue" class="form-label">Address</label>
-                <input type="text" class="form-control" id="event-address" name="address" required>
+                <label for="event-venue" class="form-label">Address *</label>
+                <input type="text" class="form-control" id="event-address" name="address" placeholder="For example: BS2 5RH, Bass street 45..." required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
-                <label for="event-genre" class="form-label">Genre</label>
-                <input type="text" class="form-control" id="event-genre" name="genre" required>
+                <label for="event-genre" class="form-label">Genre *</label>
+                <input type="text" class="form-control" id="event-genre" name="genre" placeholder="Choose a genre." required>
             </div>
             <div class="col-md-6 mb-3">
-                <label for="event-organiser" class="form-label">Organiser</label>
-                <input type="text" class="form-control" id="event-organiser" name="organiser" required>
+                <label for="event-organiser" class="form-label">Organiser/Venue *</label>
+                <input type="text" class="form-control" id="event-organiser" name="organiser" placeholder="Who is organising this event?"  required>
             </div>
         </div>
         <div class="mb-3">
-            <label for="event-description" class="form-label">Description</label>
-            <textarea class="form-control" id="event-description" name="event_description" rows="5" required></textarea>
+            <label for="event-description" class="form-label">Description *</label>
+            <textarea class="form-control" id="event-description" name="event_description" rows="5" required placeholder="What's this event is about?"></textarea>
         </div>
         <div class="mb-3">
-            <label for="event-artists" class="form-label">Artists</label>
-            <input type="text" class="form-control" id="event-artists" name="artists" required>
+            <label for="event-artists" class="form-label">Artists *</label>
+            <input type="text" class="form-control" id="event-artists" name="artists" placeholder="Enter artist names separated by a comma..." required>
         </div>
         <div class="mb-3">
             <label for="event-music" class="form-label">Music (URL)</label>
-            <input type="url" class="form-control" id="event-music" name="music">
+            <input type="url" class="form-control" id="event-music" name="music" placeholder="Use a soundcloud, youtube spotify etc. link.">
         </div>
 
         <div class="mb-4">

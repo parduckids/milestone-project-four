@@ -1,0 +1,76 @@
+<!-- templates/event_detail.html -->
+{% extends 'base.html' %}
+
+{% block extra_title %}
+{{ event.event_name }}
+{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="container mt-5 sexy-font">
+    <h1>{{ event.event_name }}</h1>
+    <h4 class="">{{ event.organiser }}, {{ event.city }} - {{ event.formatted_date }}</h4>
+</div>
+
+<!-- event image -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <img src="{{ event.event_image }}" class="img-fluid" alt="Event Image">
+        </div>
+    </div>
+</div>
+
+<!-- event details -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Event Description</h2>
+            <p>{{ event.event_description }}</p>
+            <p>Artists:</p>
+
+            <ul>
+                {% for artist in artist_list %}
+                <li>{{ artist }}</li>
+                {% endfor %}
+            </ul>
+            <p>Don't miss out on this unique event that pushes the boundaries of music and art. Get your tickets now and
+                be part of an extraordinary night!</p>
+            <a href="{{ event.music }}" target="_blank">Listen here</a>
+        </div>
+        <div class="col-md-4">
+            <h2>Event Details</h2>
+            <table class="table">
+                <tr>
+                    <th scope="row">Date</th>
+                    <td>{{ event.date }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Time</th>
+                    <td>{{ event.start_time }} - {{ event.end_time }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Venue</th>
+                    <td>{{ event.organiser }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Address</th>
+                    <td>{{ event.address }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">City</th>
+                    <td>{{ event.city }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Genre</th>
+                    <td>{{ event.genre }}</td>
+                </tr>
+            </table>
+            
+            <a href="#" class="btn btn-outline-warning btn-lg btn-block mt-3">
+                <span class="bi bi-ticket-fill me-1"></span> Get Tickets
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

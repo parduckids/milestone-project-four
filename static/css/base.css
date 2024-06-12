@@ -32,7 +32,15 @@ h1 {
     font-weight: bold;
     color: #fff !important;
 }
-
+.navbar-toggler{
+    background-color: white !important;
+}
+.navbar-toggler:hover{
+    filter: brightness(90%);
+}
+.navbar-toggler:focus{
+    box-shadow: 0 0 0 0 !important;
+}
 .nav-link {
     color: #fff !important;
     transition: color 0.3s ease;
@@ -122,6 +130,10 @@ body {
 
 .content {
     flex: 1;
+}
+
+.table{
+    background-color: white !important;
 }
 
 /* Footer */
