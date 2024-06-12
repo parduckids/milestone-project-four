@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_title %} Edit Event {% endblock %}
+
+{% block content %}
+<div class="container mt-5 sexy-font">
+    <h1>Edit Event</h1>
+    <p class="text-muted">Update the form below to edit the event details.</p>
+</div>
+
+<div class="container mt-4">
+    <form id="edit-event-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+     <div class="mb-4">
+            <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-3">Save Changes</button>
+            <a href="#" class="btn btn-outline-secondary btn-lg btn-block mt-3">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
