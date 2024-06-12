@@ -64,9 +64,18 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     # My apps
-    'event'
+    'event',
+    # Other installed apps
+    'cloudinary',
+    'cloudinary_storage',
     
 ]
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'your-cloud-name',
+    'API_KEY': 'your-api-key',
+    'API_SECRET': 'your-api-secret'
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

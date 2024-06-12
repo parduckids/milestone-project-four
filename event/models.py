@@ -4,12 +4,12 @@ from django.db import models
 
 from django.db import models
 from django.utils import timezone
+from cloudinary.models import CloudinaryField
 
 class Event(models.Model):
     # Fields
     event_id = models.AutoField(primary_key=True)
     event_name = models.CharField(max_length=200)
-    event_image = models.ImageField(upload_to='event_images/')
     genre = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     address = models.CharField(max_length=255)
