@@ -21,7 +21,8 @@ class Event(models.Model):
     artists = models.CharField(max_length=255)
     date_uploaded = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    music = models.URLField(max_length=200, blank=True, null=True)  # Links to music platforms
+    music = models.URLField(max_length=200, blank=True, null=True)
+    event_image = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.event_name
