@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import EventForm 
+from .models import Event
 
 # Create your views here.
 
@@ -9,7 +10,8 @@ def index (request):
 
 def events (request):
     """ A view to return the events page """
-    return render(request, 'event/events.html')
+    events = Event.objects.all()
+    return render(request, 'event/events.html', {'events': events})
 
 def create_event(request):
     if request.method == "POST":

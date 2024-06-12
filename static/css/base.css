@@ -67,6 +67,7 @@ h1 {
 
 .date-overlay {
     position: absolute;
+    font-size: 0.9em;
     top: 10px;
     left: 10px;
     background-color: black;

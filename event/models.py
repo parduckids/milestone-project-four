@@ -6,6 +6,7 @@ from django.db import models
 from django.utils import timezone
 from cloudinary.models import CloudinaryField
 
+# todo: set up default values for genre city, organiser
 class Event(models.Model):
     # Fields
     event_id = models.AutoField(primary_key=True)
@@ -28,13 +29,27 @@ class Event(models.Model):
         return self.event_name
 
 
+
+    # if the event date is today, return today instead of the date, same with 'tomorrow'
     @property
-    # If the event date is today, return today instead of the date, same with 'tomorrow'
     def formatted_date(self):
-        today = timezone.now().date()
-        if self.date == today:
+        # get today's date in the correct timezone
+        today = timezone.localdate()
+        # get the event's date
+        event_date = self.date
+
+        # if the event is today, return "Today"
+        if event_date == today:
             return "Today"
-        elif self.date == today + timezone.timedelta(days=1):
+        # if the event is tomorrow, return "Tomorrow"
+        elif event_date == today + timezone.timedelta(days=1):
             return "Tomorrow"
+        # if the event is in the same week as today, return the day name 
+        elif event_date.isocalendar()[1] == today.isocalendar()[1]:
+            return event_date.strftime('%A')
+        # if the event is in the same year as today, return the month and day
+        elif event_date.year == today.year:
+            return event_date.strftime('%B %d')
+        # if the event is in a different year, return the full date 
         else:
-            return self.date.strftime('%Y-%m-%d')
+            return event_date.strftime('%B %d, %Y')

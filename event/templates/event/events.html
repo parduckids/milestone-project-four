@@ -46,148 +46,29 @@
 <div class="container mt-5">
     <h2>All Events:</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
+        <!-- dynamic events using the event model -->
+        {% for event in events %}
         <div class="col">
             <div class="position-relative square-container">
-                <div class="date-overlay p-2">Today</div>
-                <img src="https://f4.bcbits.com/img/a1615394167_10.jpg" class="square-image" alt="Event Image">
+                <div class="date-overlay p-2">{{ event.formatted_date }}</div>
+                <img src="{{ event.event_image }}" class="square-image" alt="Event Image">
             </div>
             <div class="card-body mt-2 text-center">
                 <div class="d-flex align-items-center justify-content-center">
-                    <a href="#" class="badge bg-success text-decoration-none mb-2 me-2">House</a>
-                    <p class="card-text mb-1">Club XYZ</p>
+                    <!-- todo: change the color depending on the genre -->
+                    <a href="#" class="badge bg-dark text-decoration-none mb-2">{{ event.genre }}</a>
+                    <p class="card-text mb-1">{{ event.organiser }}</p>
                 </div>
-                <h5 class="card-title">Underground Beats</h5>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
-                    Tickets</a>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
-                    Tell me more</a>
+                <h5 class="card-title">{{ event.event_name }}</h5>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2">
+                    <span class="bi bi-ticket-fill me-1"></span> Get Tickets
+                </a>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2">
+                    <span class="bi bi-calendar-event me-1"></span> Tell me more
+                </a>
             </div>
         </div>
-        <div class="col">
-            <div class="position-relative square-container">
-                <div class="date-overlay p-2">Tomorrow</div>
-                <img src="https://i0.wp.com/2.bp.blogspot.com/-mTM5WA7QcPM/XNhHe0uKnoI/AAAAAAAAIsI/AVizMUSs8wcJivsJtBTJUYT7mgqE2BPmQCLcBGAs/s1600/MORD061%2BArtwork.jpg?ssl=1"
-                    class="square-image" alt="Event Image">
-            </div>
-            <div class="card-body mt-2 text-center">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="#" class="badge bg-warning text-decoration-none mb-2">Noise</a>
-                    <p class="card-text mb-1">Club XYZ</p>
-                </div>
-                <h5 class="card-title">Underground Beats</h5>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
-                    Tickets</a>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
-                    Tell me more</a>
-            </div>
-        </div>
-        <div class="col">
-            <div class="position-relative square-container">
-                <div class="date-overlay p-2">Tomorrow</div>
-                <img src="https://media.hardwax.com/images/78270_01big.jpg" class="square-image" alt="Event Image">
-            </div>
-            <div class="card-body mt-2 text-center">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="#" class="badge bg-danger text-decoration-none mb-2">Experimental</a>
-                    <p class="card-text mb-1">Club XYZ</p>
-                </div>
-                <h5 class="card-title">Underground Beats</h5>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
-                    Tickets</a>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
-                    Tell me more</a>
-            </div>
-        </div>
-        <div class="col">
-            <div class="position-relative square-container">
-                <div class="date-overlay p-2">Next Week</div>
-                <img src="https://i1.sndcdn.com/artworks-TXheZWgrr3IA74yC-XWzpzQ-t500x500.jpg" class="square-image"
-                    alt="Event Image">
-            </div>
-            <div class="card-body mt-2 text-center">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="#" class="badge bg-dark text-decoration-none mb-2">Techno</a>
-                    <p class="card-text mb-1">Club XYZ</p>
-                </div>
-                <h5 class="card-title">Underground Beats</h5>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
-                    Tickets</a>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
-                    Tell me more</a>
-            </div>
-        </div>
-        <div class="col">
-            <div class="position-relative square-container">
-                <div class="date-overlay p-2">Next Week</div>
-                <img src="https://f4.bcbits.com/img/a1615394167_10.jpg" class="square-image" alt="Event Image">
-            </div>
-            <div class="card-body mt-2 text-center">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="#" class="badge bg-success text-decoration-none mb-2 me-2">House</a>
-                    <p class="card-text mb-1">Club XYZ</p>
-                </div>
-                <h5 class="card-title">Underground Beats</h5>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
-                    Tickets</a>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
-                    Tell me more</a>
-            </div>
-        </div>
-        <div class="col">
-            <div class="position-relative square-container">
-                <div class="date-overlay p-2">Next Month</div>
-                <img src="https://i0.wp.com/2.bp.blogspot.com/-mTM5WA7QcPM/XNhHe0uKnoI/AAAAAAAAIsI/AVizMUSs8wcJivsJtBTJUYT7mgqE2BPmQCLcBGAs/s1600/MORD061%2BArtwork.jpg?ssl=1"
-                    class="square-image" alt="Event Image">
-            </div>
-            <div class="card-body mt-2 text-center">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="#" class="badge bg-warning text-decoration-none mb-2">Noise</a>
-                    <p class="card-text mb-1">Club XYZ</p>
-                </div>
-                <h5 class="card-title">Underground Beats</h5>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
-                    Tickets</a>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
-                    Tell me more</a>
-            </div>
-        </div>
-        <div class="col">
-            <div class="position-relative square-container">
-                <div class="date-overlay p-2">Next Month</div>
-                <img src="https://media.hardwax.com/images/78270_01big.jpg" class="square-image" alt="Event Image">
-            </div>
-            <div class="card-body mt-2 text-center">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="#" class="badge bg-danger text-decoration-none mb-2">Experimental</a>
-                    <p class="card-text mb-1">Club XYZ</p>
-                </div>
-                <h5 class="card-title">Underground Beats</h5>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
-                    Tickets</a>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
-                    Tell me more</a>
-            </div>
-        </div>
-        <div class="col">
-            <div class="position-relative square-container">
-                <div class="date-overlay p-2">Next Month</div>
-                <img src="https://i1.sndcdn.com/artworks-TXheZWgrr3IA74yC-XWzpzQ-t500x500.jpg" class="square-image"
-                    alt="Event Image">
-            </div>
-            <div class="card-body mt-2 text-center">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="#" class="badge bg-dark text-decoration-none mb-2">Techno</a>
-                    <p class="card-text mb-1">Club XYZ</p>
-                </div>
-                <h5 class="card-title">Underground Beats</h5>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-ticket-fill me-1"></span> Get
-                    Tickets</a>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2"><span class="bi bi-calendar-event me-1"></span>
-                    Tell me more</a>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
-
-
 {% endblock %}
