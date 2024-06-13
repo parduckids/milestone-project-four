@@ -3,9 +3,10 @@ from .forms import EventForm
 from .models import Event
 
 # todo: add actual events, show only free, the newest date ones
-def index (request):
-    """ A view to return the index page """
-    return render(request, 'event/index.html')
+def index(request):
+    """ A view to return the index page with only featured events """
+    featured_events = Event.objects.filter(featured=True)
+    return render(request, 'event/index.html', {'events': featured_events})
 # todo: filtering events 
 def events (request):
     """ A view to return the events page """
@@ -37,13 +38,14 @@ def edit_event(request, event_id):
     """ A view to return the edit event page """
     event = get_object_or_404(Event, event_id=event_id)
     if request.method == 'POST':
-        form = EventForm(request.POST, instance=event)
+        form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             form.save()
-            return redirect('manage')
+            return redirect('manage')  # Change 'manage' to your desired redirect URL
     else:
         form = EventForm(instance=event)
-    return render(request, 'event/edit_event.html', {'form': form})
+    return render(request, 'event/edit_event.html', {'form': form, 'event': event})
+
 
 # todo: event data doesn't show on delete event page
 def delete_event(request, event_id):

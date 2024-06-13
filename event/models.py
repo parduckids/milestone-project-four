@@ -24,6 +24,7 @@ class Event(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
     music = models.URLField(max_length=200, blank=True, null=True)
     event_image = models.CharField(max_length=255, blank=True, null=True)
+    featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.event_name

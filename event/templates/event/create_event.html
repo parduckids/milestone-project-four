@@ -15,6 +15,13 @@
 <div class="container mt-4">
     <form id="upload-event-form" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        <!-- add featured checkbox -->
+        <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" id="event-featured" name="featured" value="true">
+            <label class="form-check-label" for="event-featured">
+                Featured Event
+            </label>
+        </div>
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="event-name" class="form-label">Event Name *</label>
@@ -100,6 +107,7 @@
             <button type="button" id="upload_widget" class="btn btn-outline-warning btn-lg btn-block mt-3">Upload
                 Image</button>
         </div>
+        
         <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-3">Upload Event</button>
     </form>
 </div>

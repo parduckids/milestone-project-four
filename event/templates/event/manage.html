@@ -16,7 +16,7 @@
                     <a href="#" class="badge bg-dark text-decoration-none mb-2">{{ event.genre }}</a>
                     <p class="card-text mb-1">{{ event.organiser }}</p>
                 </div>
-                <h5 class="card-title">{{ event.event_name }} {{ event.event_id }}</h5>
+                <h5 class="card-title">{{ event.event_name }}</h5>
                 <a href="{% url 'edit_event' event.event_id %}" class="btn btn-outline-primary btn-sm mt-2">
                     <span class="bi bi-pencil me-1"></span> Edit
                 </a>
