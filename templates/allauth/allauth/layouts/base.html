@@ -38,13 +38,23 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'events' %}">Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_login' %}">About</a>
-                        </li>
+                        {% if user.is_authenticated and user.username != "administrator" %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'events' %}">Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'account_login' %}">About</a>
+                            </li>
+                        {% endif %}
                         {% if user.is_authenticated %}
+                            {% if user.is_authenticated and user.username == "administrator" %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'create' %}">Add Events</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'manage' %}">Manage</a>
+                                </li>
+                            {% endif %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Account
@@ -82,6 +92,7 @@
                                 {% endif %}
                             </ul>
                         </li>
+                        
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_login' %}">{% trans "Login" %}</a>

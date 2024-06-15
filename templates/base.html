@@ -60,16 +60,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'events' %}">Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_login' %}">About</a>
-                        </li>
+                        {% if user.is_authenticated and user.username != "administrator" %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'events' %}">Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'account_login' %}">About</a>
+                            </li>
+                        {% endif %}
                         {% if user.is_authenticated %}
+                            {% if user.is_authenticated and user.username == "administrator" %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'create' %}">Add Events</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'manage' %}">Manage</a>
+                                </li>
+                            {% endif %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Account
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
@@ -82,22 +91,19 @@
                                 {% url 'account_change_password' as change_password_url %}
                                 {% if change_password_url %}
                                 <li>
-                                    <a class="dropdown-item"
-                                        href="{{ change_password_url }}">{% trans "Change Password" %}</a>
+                                    <a class="dropdown-item" href="{{ change_password_url }}">{% trans "Change Password" %}</a>
                                 </li>
                                 {% endif %}
                                 {% url 'mfa_index' as mfa_url %}
                                 {% if mfa_url %}
                                 <li>
-                                    <a class="dropdown-item"
-                                        href="{{ mfa_url }}">{% trans "Two-Factor Authentication" %}</a>
+                                    <a class="dropdown-item" href="{{ mfa_url }}">{% trans "Two-Factor Authentication" %}</a>
                                 </li>
                                 {% endif %}
                                 {% url 'usersessions_list' as usersessions_list_url %}
                                 {% if usersessions_list_url %}
                                 <li>
-                                    <a class="dropdown-item"
-                                        href="{{ usersessions_list_url }}">{% trans "Sessions" %}</a>
+                                    <a class="dropdown-item" href="{{ usersessions_list_url }}">{% trans "Sessions" %}</a>
                                 </li>
                                 {% endif %}
                                 {% url 'account_logout' as logout_url %}
@@ -108,6 +114,7 @@
                                 {% endif %}
                             </ul>
                         </li>
+                        
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_login' %}">{% trans "Login" %}</a>

@@ -1,8 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EventForm 
 from .models import Event
+# import allauth decorator to check if admin is logged in, add it to all admin restricted views
+from django.contrib.auth.decorators import user_passes_test
 
-# todo: add actual events, show only free, the newest date ones
+# todo, add 404, 302 etc pages... 
+
+# check if username is administrator
+def is_administrator(user):
+    return user.is_authenticated and user.username == 'administrator'
+
 def index(request):
     """ A view to return the index page with only featured events """
     featured_events = Event.objects.filter(featured=True)
@@ -13,6 +20,7 @@ def events (request):
     events = Event.objects.all()
     return render(request, 'event/events.html', {'events': events})
 
+@user_passes_test(is_administrator)
 def create_event(request):
     """ A view to return the create event page """
     # todo: only allow this to the admin user
@@ -28,12 +36,14 @@ def create_event(request):
     return render(request, 'event/create_event.html', {'form': form})
 
 # todo: filtering events 
+@user_passes_test(is_administrator)
 def manage_events(request):
     """ A view to return the manage events page """
     events = Event.objects.all()
     return render(request, 'event/manage.html', {'events': events})
 
 # todo: event data doesn't show on edit event page when normal layout is set, layout needs to be changed, image should be shown
+@user_passes_test(is_administrator)
 def edit_event(request, event_id):
     """ A view to return the edit event page """
     event = get_object_or_404(Event, event_id=event_id)
@@ -48,6 +58,8 @@ def edit_event(request, event_id):
 
 
 # todo: event data doesn't show on delete event page
+
+@user_passes_test(is_administrator)
 def delete_event(request, event_id):
     """ A view for deleting an event """
     event = get_object_or_404(Event, event_id=event_id)
