@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EventForm 
 from .models import Event
+# import timezone to check if event is in the past
+from django.utils import timezone
 # import allauth decorator to check if admin is logged in, add it to all admin restricted views
 from django.contrib.auth.decorators import user_passes_test
 
@@ -18,18 +20,19 @@ def index(request):
 # todo: filtering events 
 def events(request):
     """ A view to return the events page with filtering """
-    events = Event.objects.all()
+    # check if event is in the past, only return current or future ones
+    events = Event.objects.filter(date__gte=timezone.now())
 
     # get filter parameters from the request
     genre = request.GET.get('event_type')
-    event_date = request.GET.get('event_date')
+    date = request.GET.get('date')
     city = request.GET.get('event_city')
 
     # apply filters if parameters are provided
     if genre:
         events = events.filter(genre=genre)
-    if event_date:
-        events = events.filter(date=event_date)
+    if date:
+        events = events.filter(date=date)
     if city:
         events = events.filter(city=city)
 
