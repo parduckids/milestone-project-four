@@ -1,2 +1,6 @@
-def about(request):
-    return render(request, 'about.html')
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('about/', views.about, name='about'),
+]
