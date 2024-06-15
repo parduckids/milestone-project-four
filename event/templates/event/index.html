@@ -22,8 +22,14 @@
             </div>
             <div class="card-body mt-2 text-center">
                 <h5 class="card-title">{{ event.event_name }}</h5>
-                <p class="card-text">{{ event.event_description }}</p>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-2">
+                    <span class="bi bi-ticket-fill me-1"></span> Get Tickets
+                </a>
+                <a href="{% url 'event_detail' event.event_id %}" class="btn btn-outline-warning btn-sm mt-2">
+                    <span class="bi bi-calendar-event me-1"></span> Tell me more
+                </a>
             </div>
+            
         </div>
         {% endfor %}
     </div>
