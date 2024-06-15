@@ -35,11 +35,32 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '8000-parduckids-milestonepro-8qpgd972xo7.ws-eu114.gitpod.io',
     '8000-parduckids-milestonepro-rl583zc92m7.ws-eu114.gitpod.io',
+    '8000-parduckids-milestonepro-vz1kcc6hqu6.ws-eu114.gitpod.io'
     ]
 # Add CSRF trusted link
-CSRF_TRUSTED_ORIGINS = ['https://8000-parduckids-milestonepro-rl583zc92m7.ws-eu114.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-parduckids-milestonepro-rl583zc92m7.ws-eu114.gitpod.io',
+'https://8000-parduckids-milestonepro-vz1kcc6hqu6.ws-eu114.gitpod.io']
 
 SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

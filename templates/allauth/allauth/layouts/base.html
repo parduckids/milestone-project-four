@@ -1,0 +1,142 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Major+Mono+Display&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>
+        Subsurface | {% block head_title %}
+        {% endblock head_title %}
+    </title>
+    {% block extra_head %}
+    {% endblock extra_head %}
+</head>
+
+<body>
+    <div class="flex-wrapper">
+        <!-- Transparent Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <div class="container">
+                <a class="navbar-brand sexy-font" href="{% url 'account_login' %}">Subsurface</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'events' %}">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}">About</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                                {% url 'account_email' as email_url %}
+                                {% if email_url %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ email_url }}">{% trans "Change Email" %}</a>
+                                </li>
+                                {% endif %}
+                                {% url 'account_change_password' as change_password_url %}
+                                {% if change_password_url %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ change_password_url }}">{% trans "Change Password" %}</a>
+                                </li>
+                                {% endif %}
+                                {% url 'mfa_index' as mfa_url %}
+                                {% if mfa_url %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ mfa_url }}">{% trans "Two-Factor Authentication" %}</a>
+                                </li>
+                                {% endif %}
+                                {% url 'usersessions_list' as usersessions_list_url %}
+                                {% if usersessions_list_url %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ usersessions_list_url }}">{% trans "Sessions" %}</a>
+                                </li>
+                                {% endif %}
+                                {% url 'account_logout' as logout_url %}
+                                {% if logout_url %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ logout_url }}">{% trans "Sign Out" %}</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}">{% trans "Login" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_signup' %}">{% trans "Register" %}</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Messages -->
+        {% if messages %}
+        <div class="container mt-3">
+            <div class="alert alert-info">
+                <strong>{% trans "Messages:" %}</strong>
+                <ul class="mb-0">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Content Block -->
+        <div class="container mt-4">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-transparent py-3">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-6 d-flex align-items-center justify-content-center">
+                        <a href="#" class="text-white mr-3">Contact</a>
+                        <a href="#" class="text-white mr-3">Cookie Policy</a>
+                        <a href="#" class="text-white mr-3">Privacy Policy</a>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center justify-content-center">
+                        <a href="#" class="text-white mr-3">About</a>
+                        <a href="#" class="text-white mr-3">Terms</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    {% block extra_body %}
+    {% endblock extra_body %}
+</body>
+
+</html>

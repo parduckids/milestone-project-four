@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+{% load allauth i18n %}
 <!doctype html>
 <html lang="en">
 
@@ -46,10 +48,9 @@
 <body class="flex-wrapper">
     <!-- Base navigation bar -->
     <header>
-        <!-- Transparent Navbar - Logged Out -->
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
             <div class="container">
-                <a class="navbar-brand sexy-font" href="{% url 'index' %}">Subsurface</a>
+                <a class="navbar-brand sexy-font" href="{% url 'account_login' %}">Subsurface</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -63,67 +64,112 @@
                             <a class="nav-link" href="{% url 'events' %}">Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="{% url 'account_login' %}">About</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                                {% url 'account_email' as email_url %}
+                                {% if email_url %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ email_url }}">{% trans "Change Email" %}</a>
+                                </li>
+                                {% endif %}
+                                {% url 'account_change_password' as change_password_url %}
+                                {% if change_password_url %}
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ change_password_url }}">{% trans "Change Password" %}</a>
+                                </li>
+                                {% endif %}
+                                {% url 'mfa_index' as mfa_url %}
+                                {% if mfa_url %}
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ mfa_url }}">{% trans "Two-Factor Authentication" %}</a>
+                                </li>
+                                {% endif %}
+                                {% url 'usersessions_list' as usersessions_list_url %}
+                                {% if usersessions_list_url %}
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ usersessions_list_url }}">{% trans "Sessions" %}</a>
+                                </li>
+                                {% endif %}
+                                {% url 'account_logout' as logout_url %}
+                                {% if logout_url %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ logout_url }}">{% trans "Sign Out" %}</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}">{% trans "Login" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_signup' %}">Login/Register</a>
+                            <a class="nav-link" href="{% url 'account_signup' %}">{% trans "Register" %}</a>
                         </li>
-
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
+
     {% block content %}
     {% endblock %}
     <!-- Base footer -->
-<footer class="text-white bg-transparent">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
-              <a href="#" class="text-white mr-3">Contact</a>
-              <a href="#" class="text-white mr-3">Cookie Policy</a>
-              <a href="#" class="text-white mr-3">Privacy Policy</a>
-          </div>
-          <div class="col-md-6 d-flex justify-content-center justify-content-md-end mt-3 mt-md-0">
-              <a href="#" class="text-white mr-3">About</a>
-              <a href="#" class="text-white mr-3">Terms</a>
-              <!-- Only when user logged in -->
-              <!-- <a href="#" class="text-white btn btn-outline-light btn-sm">Log Out</a> -->
-          </div>
-      </div>
-      <div class="row mt-2">
-          <div class="col-12 text-center">
-              <a href="#subscribe-section" class="text-white" style="text-decoration: underline !important;" data-toggle="collapse" aria-expanded="false" aria-controls="subscribe-section">
-                  Subscribe to our Mailing List
-              </a>
-          </div>
-      </div>
-      <div class="collapse mt-3" id="subscribe-section">
-          <div class="row">
-              <div class="col-12 d-flex flex-column align-items-center">
-                  <p class="mb-2 text-center small">Subscribe to the Subsurface Underground Event mailing list to get the latest updates and exclusive content.</p>
-                  <form class="form-inline d-flex justify-content-center" id="subscribe-form">
-                      <div class="input-group">
-                          <input type="email" class="form-control" id="subscribe-email" placeholder="Enter your email" required>
-                          <div class="input-group-append">
-                              <button type="submit" class="btn btn-outline-light ml-2" style="height: 100%; margin-left: 5px;">Subscribe</button>
-                          </div>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
-</footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    {% block postloadjs %}
-    
-    {% endblock %}
+    <footer class="text-white bg-transparent">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
+                    <a href="#" class="text-white mr-3">Contact</a>
+                    <a href="#" class="text-white mr-3">Cookie Policy</a>
+                    <a href="#" class="text-white mr-3">Privacy Policy</a>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center justify-content-md-end mt-3 mt-md-0">
+                    <a href="#" class="text-white mr-3">About</a>
+                    <a href="#" class="text-white mr-3">Terms</a>
+                    <!-- Only when user logged in -->
 
-
+                    <!-- <a href="#" class="text-white btn btn-outline-light btn-sm">Log Out</a> -->
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-12 text-center">
+                    <a href="#subscribe-section" class="text-white" style="text-decoration: underline !important;"
+                        data-toggle="collapse" aria-expanded="false" aria-controls="subscribe-section">
+                        Subscribe to our Mailing List
+                    </a>
+                </div>
+            </div>
+            <div class="collapse mt-3" id="subscribe-section">
+                <div class="row">
+                    <div class="col-12 d-flex flex-column align-items-center">
+                        <p class="mb-2 text-center small">Subscribe to the Subsurface Underground Event mailing list to
+                            get the latest updates and exclusive content.</p>
+                        <form class="form-inline d-flex justify-content-center" id="subscribe-form">
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="subscribe-email"
+                                    placeholder="Enter your email" required>
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-outline-light ml-2"
+                                        style="height: 100%; margin-left: 5px;">Subscribe</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
