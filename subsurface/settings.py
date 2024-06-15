@@ -88,6 +88,7 @@ INSTALLED_APPS = [
     # My apps
     'event',
     'newsletter',
+    'contact'
     # Other installed apps
     'cloudinary',
     'cloudinary_storage',
