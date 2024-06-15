@@ -12,39 +12,56 @@
 
 <!-- Inline Filter Menu and Calendar -->
 <div class="container mt-4">
-    <form class="d-flex justify-content-between">
+    <form class="d-flex justify-content-between" method="get" action="{% url 'events' %}">
         <div class="d-flex flex-column flex-md-row">
             <div class="me-3 mb-2 mb-md-0">
                 <label for="eventType" class="form-label">Event Type</label>
-                <select class="form-select" id="eventType">
-                    <option selected>All</option>
-                    <option value="house">House</option>
-                    <option value="noise">Noise</option>
-                    <option value="experimental">Experimental</option>
-                    <option value="techno">Techno</option>
+                <select class="form-select" id="eventType" name="event_type">
+                    <option value="" {% if not request.GET.event_type %}selected{% endif %}>All</option>
+                    <option value="house" {% if request.GET.event_type == 'house' %}selected{% endif %}>House</option>
+                    <option value="noise" {% if request.GET.event_type == 'noise' %}selected{% endif %}>Noise</option>
+                    <option value="experimental" {% if request.GET.event_type == 'experimental' %}selected{% endif %}>Experimental</option>
+                    <option value="techno" {% if request.GET.event_type == 'techno' %}selected{% endif %}>Techno</option>
                 </select>
             </div>
             <div class="me-3 mb-2 mb-md-0">
                 <label for="eventDate" class="form-label">Date</label>
-                <input type="date" class="form-control" id="eventDate">
+                <input type="date" class="form-control" id="eventDate" name="event_date" value="{{ request.GET.event_date }}">
             </div>
             <div class="me-3 mb-2 mb-md-0">
                 <label for="eventCity" class="form-label">City</label>
-                <select class="form-select" id="eventCity">
-                    <option selected>All</option>
-                    <option value="bristol">Bristol</option>
-                    <option value="london">London</option>
-                    <option value="birmingham">Birmingham</option>
+                <select class="form-select" id="eventCity" name="event_city">
+                    <option value="" {% if not request.GET.event_city %}selected{% endif %}>All</option>
+                    <option value="london" {% if request.GET.event_city == 'london' %}selected{% endif %}>London</option>
+                    <option value="birmingham" {% if request.GET.event_city == 'birmingham' %}selected{% endif %}>Birmingham</option>
+                    <option value="manchester" {% if request.GET.event_city == 'manchester' %}selected{% endif %}>Manchester</option>
+                    <option value="bristol" {% if request.GET.event_city == 'bristol' %}selected{% endif %}>Bristol</option>
+                    <option value="liverpool" {% if request.GET.event_city == 'liverpool' %}selected{% endif %}>Liverpool</option>
+                    <option value="cardiff" {% if request.GET.event_city == 'cardiff' %}selected{% endif %}>Cardiff</option>
                 </select>
             </div>
         </div>
-        <button type="submit" class="btn btn-warning align-self-end">Apply Filters</button>
+        <div class="d-flex align-items-end">
+            <button type="submit" class="btn btn-warning me-2">Apply Filters</button>
+            <a href="{% url 'events' %}" class="btn btn-secondary">Clear Filters</a>
+        </div>
     </form>
 </div>
 
 <!-- Events List -->
 <div class="container mt-5">
-    <h2>All Events:</h2>
+    <!-- change heading to reflect filter changes -->
+    <h2>
+        {% if request.GET.event_city and request.GET.event_type %}
+            {{ request.GET.event_type|title }} events in {{ request.GET.event_city|title }}:
+        {% elif request.GET.event_city %}
+            Events in {{ request.GET.event_city|title }}:
+        {% elif request.GET.event_type %}
+            {{ request.GET.event_type|title }} events:
+        {% else %}
+            All Events:
+        {% endif %}
+    </h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
         <!-- dynamic events using the event model -->
         {% if events %}
@@ -72,7 +89,7 @@
         {% endfor %}
         {% else %}
         <div class="container mt-5 text-center w-100">
-            <h2>No events at the moment. Come back later!</h2>
+            <h2 class="text-center text-muted mt-5">No events at the moment. Please check back later!</h2>
         </div>
         {% endif %}
     </div>

@@ -16,11 +16,25 @@ def index(request):
     featured_events = Event.objects.filter(featured=True)
     return render(request, 'event/index.html', {'events': featured_events})
 # todo: filtering events 
-def events (request):
-    """ A view to return the events page """
+def events(request):
+    """ A view to return the events page with filtering """
     events = Event.objects.all()
-    return render(request, 'event/events.html', {'events': events})
 
+    # get filter parameters from the request
+    genre = request.GET.get('event_type')
+    event_date = request.GET.get('event_date')
+    city = request.GET.get('event_city')
+
+    # apply filters if parameters are provided
+    if genre:
+        events = events.filter(genre=genre)
+    if event_date:
+        events = events.filter(date=event_date)
+    if city:
+        events = events.filter(city=city)
+
+    # render the template with the filtered events
+    return render(request, 'event/events.html', {'events': events})
 @user_passes_test(is_administrator)
 def create_event(request):
     """ A view to return the create event page """
