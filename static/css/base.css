@@ -3,7 +3,7 @@ html,
 body {
     background-color: #28282B;
     color: white;
-    font-family: "Cutive Mono", monospace;
+    font-family: "Cutive Mono", monospace !important;
     font-weight: 400;
     font-style: normal;
     text-transform: uppercase;

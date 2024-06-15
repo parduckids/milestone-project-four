@@ -87,6 +87,7 @@ INSTALLED_APPS = [
     'allauth.account',
     # My apps
     'event',
+    'newsletter',
     # Other installed apps
     'cloudinary',
     'cloudinary_storage',

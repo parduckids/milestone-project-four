@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import user_passes_test
 
 # check if username is administrator
 def is_administrator(user):
+    """ A view to check if the user has admin rights """
     return user.is_authenticated and user.username == 'administrator'
 
 def index(request):
