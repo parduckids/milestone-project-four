@@ -138,8 +138,12 @@
                     <a href="#" class="text-white mr-3">About</a>
                     <a href="#" class="text-white mr-3">Terms</a>
                     <!-- Only when user logged in -->
-
-                    <!-- <a href="#" class="text-white btn btn-outline-light btn-sm">Log Out</a> -->
+                    {% if user.is_authenticated %}
+                        {% url 'account_logout' as logout_url %}
+                        {% if logout_url %}
+                        <a href="{{ logout_url }}" class="text-white btn btn-outline-light btn-sm">Log Out</a>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
             <div class="row mt-2">
