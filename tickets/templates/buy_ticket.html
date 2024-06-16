@@ -21,6 +21,7 @@ Buy Tickets - {{ event.event_name }}
         <div class="col-md-6">
             <!-- ticket form -->
             <h2>Purchase Tickets</h2>
+            {% if remaining_tickets > 0 %}
             <form method="post">
                 {% csrf_token %}
                 <div class="mb-3">
@@ -42,6 +43,10 @@ Buy Tickets - {{ event.event_name }}
                     <span class="bi bi-ticket-fill me-1"></span> Buy Tickets
                 </button>
             </form>
+            <p class="mt-2">There are {{ remaining_tickets }} tickets left for this event.</p>
+            {% else %}
+                <p>Sorry, this event is sold out.</p>
+            {% endif %}
         </div>
 
         <div class="col-md-12">

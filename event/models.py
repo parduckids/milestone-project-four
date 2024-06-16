@@ -58,3 +58,11 @@ class Event(models.Model):
         # if the event is in a different year, return the full date 
         else:
             return event_date.strftime('%B %d, %Y')
+
+
+
+    @property
+    def remaining_tickets(self):
+        tickets_bought = self.ticket_set.aggregate(total_quantity=models.Sum('quantity'))
+        total_tickets_bought = tickets_bought['total_quantity'] or 0
+        return self.max_tickets - total_tickets_bought
