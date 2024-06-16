@@ -11,17 +11,14 @@
     <h4 class="">{{ event.organiser }}, {{ event.city }} - {{ event.formatted_date }}</h4>
 </div>
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-12">
-            <img src="{{ event.event_image }}" class="img-fluid w-100" alt="Event Image">
-        </div>
-    </div>
-</div>
+
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-5">
+            <img src="{{ event.event_image }}" class="img-fluid w-100" alt="Event Image">
+        </div>
+        <div class="col-md-6">
             <!-- ticket form -->
             <h2>Purchase Tickets</h2>
             <form method="post">
@@ -36,18 +33,20 @@
                 </div>
                 <div class="mb-3">
                     <label for="total_price" class="form-label">Total Price</label>
-                    <input type="text" id="total_price" class="form-control" value="£ {{ event.ticket_price }}" readonly>
+                    <input type="text" id="total_price" class="form-control" value="£ {{ event.ticket_price }}"
+                        readonly>
                 </div>
-                
+
                 <!-- todo: stripe -->
                 <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-3">
                     <span class="bi bi-ticket-fill me-1"></span> Buy Tickets
                 </button>
             </form>
         </div>
-        <div class="col-md-4">
+
+        <div class="col-md-12">
             <!-- event details  -->
-            <h2>Event Details</h2>
+            <h2 class="mt-5">Event Details</h2>
             <table class="table">
                 <tr>
                     <th scope="row">Date</th>
@@ -78,33 +77,22 @@
                     <td>£ {{ event.ticket_price }}</td>
                 </tr>
             </table>
-            
-            <h2>Event Description</h2>
-            <p class="text-wrap text-break p-3">{{ event.event_description }}</p>
-            <p>Artists:</p>
-            <ul>
-                {% for artist in artist_list %}
-                <li>{{ artist }}</li>
-                {% endfor %}
-            </ul>
-            <p>Don't miss out on this unique event that pushes the boundaries of music and art. Get your tickets now and be part of an extraordinary night!</p>
-            <a href="{{ event.music }}" target="_blank">Listen here</a>
         </div>
     </div>
 </div>
 
 <script>
     <!-- calculate total price with js  -->
-document.addEventListener('DOMContentLoaded', function() {
-    const quantityInput = document.getElementById('quantity');
-    const totalPriceInput = document.getElementById('total_price');
-    const ticketPrice = parseFloat('{{ event.ticket_price }}');
+    document.addEventListener('DOMContentLoaded', function () {
+        const quantityInput = document.getElementById('quantity');
+        const totalPriceInput = document.getElementById('total_price');
+        const ticketPrice = parseFloat('{{ event.ticket_price }}');
 
-    quantityInput.addEventListener('input', function() {
-        const quantity = parseFloat(this.value) || 0;
-        const totalPrice = (ticketPrice * quantity).toFixed(2);
-        totalPriceInput.value = '£ ' + totalPrice;
+        quantityInput.addEventListener('input', function () {
+            const quantity = parseFloat(this.value) || 0;
+            const totalPrice = (ticketPrice * quantity).toFixed(2);
+            totalPriceInput.value = '£ ' + totalPrice;
+        });
     });
-});
 </script>
 {% endblock %}
