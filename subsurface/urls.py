@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('event.urls')),
     path('newsletter/', include('newsletter.urls')),
     path('', include('contact.urls')),
+    path('', include('tickets.urls')),
 ]

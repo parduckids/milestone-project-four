@@ -97,6 +97,7 @@ INSTALLED_APPS = [
     'event',
     'newsletter',
     'contact',
+    'tickets',
     # Other installed apps
     'cloudinary',
     'cloudinary_storage',
