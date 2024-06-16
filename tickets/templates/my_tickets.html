@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_title %} Tickets {% endblock %}
+{% block content %}
+<div class="container mt-5 sexy-font">
+    <h1>Your Tickets</h1>
+    <p class="text-muted">Here are the events you have bought tickets for:</p>
+</div>
+
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for ticket in tickets %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ ticket.event.event_image }}" class="card-img-top" alt="Event Image">
+                <div class="card-body" style="color: black !important;">
+                    <h5 class="card-title">{{ ticket.event.event_name }}</h5>
+                    <p class="card-text">{{ ticket.event.address }}, {{ ticket.event.organiser }}</p>
+                    <p class="card-text">Date: {{ ticket.event.date|date:"Y-m-d" }} <br> {{ ticket.event.start_time }} -
+                        {{ ticket.event.end_time }}</p>
+                    <p class="card-text">Tickets: {{ ticket.quantity }}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'event_detail' ticket.event.event_id %}" class="btn btn-outline-dark btn-sm">
+                        <span class="bi bi-eye me-1"></span> View Event
+                    </a>
+                    <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#qrModal{{ ticket.id }}">
+                        <span class="bi bi-qr-code me-1"></span> Show QR Code
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- qr code for tickets -->
+        <div class="modal fade" id="qrModal{{ ticket.id }}" tabindex="-1" aria-labelledby="qrModalLabel{{ ticket.id }}"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header" style="color: black !important;">
+                        <h5 class="modal-title" id="qrModalLabel{{ ticket.id }}">Your Ticket(s) for:
+                            {{ ticket.event.event_name }}<br> <small style="font-size: 0.8em !important;">Please show
+                                the QR code(s) below at the entrance:</small></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div id="qrCarousel{{ ticket.id }}" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                {% for i in ticket.number_range %}
+                                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                    <h3 style="color: black !important;">Ticket no. {{ i }}</h3>
+                                    <img src="{% static 'images/qr.png' %}" alt="QR Code {{ ticket.id }}-{{ i }}"
+                                        class="img-fluid">
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% if ticket.quantity > 1 %}
+                            <button class="carousel-control-prev" type="button" data-bs-target="#qrCarousel{{ ticket.id }}"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#qrCarousel{{ ticket.id }}"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col">
+            <p>You haven't bought any tickets yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

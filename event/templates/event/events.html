@@ -86,7 +86,7 @@
                     <p class="card-text mb-1">{{ event.organiser }}</p>
                 </div>
                 <h5 class="card-title">{{ event.event_name }}</h5>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-2">
+                <a href="{% url 'buy_ticket' event.event_id %}" class="btn btn-outline-warning btn-sm mt-2">
                     <span class="bi bi-ticket-fill me-1"></span> Get Tickets
                 </a>
                 <a href="{% url 'event_detail' event.event_id %}" class="btn btn-outline-warning btn-sm mt-2">

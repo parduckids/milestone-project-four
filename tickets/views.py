@@ -23,3 +23,17 @@ def buy_ticket(request, event_id):
     else:
         form = TicketPurchaseForm()
     return render(request, 'buy_ticket.html', {'event': event, 'form': form})
+
+
+@login_required
+def mytickets(request):
+    user = request.user
+    tickets = Ticket.objects.filter(user=user).select_related('event')
+     # create a list of numbers for each ticket
+    for ticket in tickets:
+        ticket.number_range = range(1, ticket.quantity + 1)
+        
+    context = {
+        'tickets': tickets
+    }
+    return render(request, 'my_tickets.html', context)
