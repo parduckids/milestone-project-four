@@ -6,5 +6,5 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = [
             'event_name', 'date', 'start_time', 'end_time', 'city', 'address',
-            'genre', 'organiser', 'event_description', 'artists', 'music', 'event_image', 'featured'
+            'genre', 'organiser', 'event_description', 'artists', 'music', 'event_image', 'featured', 'ticket_price', "max_tickets"
         ]

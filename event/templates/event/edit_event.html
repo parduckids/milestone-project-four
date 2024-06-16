@@ -1,91 +1,129 @@
+
+<!-- NEW -->
+
+
 {% extends "base.html" %}
 {% load static %}
+<!-- Add title -->
 {% block extra_title %} Edit Event {% endblock %}
 
+<!-- Extend base template with content -->
 {% block content %}
+<!-- Page Content -->
 <div class="container mt-5 sexy-font">
     <h1>Edit Event</h1>
     <p class="text-muted">Update the form below to edit the event details.</p>
 </div>
 
+<!-- Edit Event Form -->
 <div class="container mt-4">
     <form id="edit-event-form" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="mb-3">
-            <label for="id_event_name" class="form-label">Event Name</label>
-            {{ form.event_name }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_date" class="form-label">Date</label>
-            {{ form.date }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_start_time" class="form-label">Start Time</label>
-            {{ form.start_time }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_end_time" class="form-label">End Time</label>
-            {{ form.end_time }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_city" class="form-label">City</label>
-            {{ form.city }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_address" class="form-label">Address</label>
-            {{ form.address }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_genre" class="form-label">Genre</label>
-            {{ form.genre }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_organiser" class="form-label">Organiser</label>
-            {{ form.organiser }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_event_description" class="form-label">Event Description</label>
-            {{ form.event_description }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_artists" class="form-label">Artists</label>
-            {{ form.artists }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_music" class="form-label">Music</label>
-            {{ form.music }}
-        </div>
-
-        <div class="mb-3">
-            <label for="id_event_image" class="form-label">Event Image</label>
-            {{ form.event_image }}
-            {% if event.event_image %}
-                <img src="{{ event.event_image.url }}" class="mt-2" alt="Event Image" style="max-width: 100%; height: auto;">
-            {% endif %}
-        </div>
-
-        <!-- Add the featured checkbox -->
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="id_featured" name="featured" {% if form.instance.featured %}checked{% endif %}>
-            <label class="form-check-label" for="id_featured">
+        <!-- add featured checkbox -->
+        <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" id="event-featured" name="featured" value="true" {% if form.featured.value %}checked{% endif %}>
+            <label class="form-check-label" for="event-featured">
                 Featured Event
             </label>
         </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="event-name" class="form-label">Event Name *</label>
+                <input type="text" class="form-control" id="event-name" name="event_name"
+                    placeholder="Name of the event." value="{{ form.event_name.value }}" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="event-date" class="form-label">Date *</label>
+                <input type="date" class="form-control" id="event-date" name="date" value="{{ form.date.value|date:'Y-m-d' }}" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="event-start-time" class="form-label">Start Time *</label>
+                <input type="time" class="form-control" id="event-start-time" name="start_time" value="{{ form.start_time.value|time:'H:i' }}" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="event-end-time" class="form-label">End Time *</label>
+                <input type="time" class="form-control" id="event-end-time" name="end_time" value="{{ form.end_time.value|time:'H:i' }}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="event-city" class="form-label">City *</label>
+                <select class="form-select" id="event-city" name="city" required>
+                    <option value="" disabled>Choose a city.</option>
+                    <option value="london" {% if form.city.value == "london" %}selected{% endif %}>London</option>
+                    <option value="birmingham" {% if form.city.value == "birmingham" %}selected{% endif %}>Birmingham</option>
+                    <option value="manchester" {% if form.city.value == "manchester" %}selected{% endif %}>Manchester</option>
+                    <option value="bristol" {% if form.city.value == "bristol" %}selected{% endif %}>Bristol</option>
+                    <option value="liverpool" {% if form.city.value == "liverpool" %}selected{% endif %}>Liverpool</option>
+                    <option value="cardiff" {% if form.city.value == "cardiff" %}selected{% endif %}>Cardiff</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="event-venue" class="form-label">Address *</label>
+                <input type="text" class="form-control" id="event-address" name="address"
+                    placeholder="For example: BS2 5RH, Bass street 45..." value="{{ form.address.value }}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="event-genre" class="form-label">Genre *</label>
+                <select class="form-select" id="event-genre" name="genre" required>
+                    <option value="" disabled>Choose a genre.</option>
+                    <option value="techno" {% if form.genre.value == "techno" %}selected{% endif %}>Techno</option>
+                    <option value="house" {% if form.genre.value == "house" %}selected{% endif %}>House</option>
+                    <option value="experimental" {% if form.genre.value == "experimental" %}selected{% endif %}>Experimental</option>
+                    <option value="noise" {% if form.genre.value == "noise" %}selected{% endif %}>Noise</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="event-organiser" class="form-label">Organiser/Venue *</label>
+                <input type="text" class="form-control" id="event-organiser" name="organiser"
+                    placeholder="Who is organising this event?" value="{{ form.organiser.value }}" required>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="event-description" class="form-label">Description *</label>
+            <textarea class="form-control" id="event-description" name="event_description" rows="5" required
+                placeholder="What's this event about?">{{ form.event_description.value }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="event-artists" class="form-label">Artists *</label>
+            <input type="text" class="form-control" id="event-artists" name="artists"
+                placeholder="Enter artist names separated by a comma..." value="{{ form.artists.value }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="event-music" class="form-label">Music (URL)</label>
+            <input type="url" class="form-control" id="event-music" name="music"
+                placeholder="Use a SoundCloud, YouTube, Spotify, etc. link." value="{{ form.music.value }}">
+        </div>
 
-        <div class="mb-4">
-            <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-3">Save Changes</button>
-            <a href="{% url 'manage' %}" class="btn btn-outline-secondary btn-lg btn-block mt-3">Cancel</a>
+        <div class="mb-3">
+            <label for="id_event_image_url" class="form-label">Event Image URL</label>
+            <input type="text" id="id_event_image_url" name="event_image_url" class="form-control" value="{{ form.event_image.value|default_if_none:'' }}">
+            <small class="form-text text-muted">You can only edit the URL for this image.</small>
+            <br>
+            {% if event.event_image %}
+                <img src="{{ event.event_image }}" class="mt-2 img-fluid" alt="Event Image">
+            {% endif %}
+        </div>
+        <div class="row">
+            <h2>Ticket Info</h2>
+            <div class="col-md-6 mb-3">
+                <label for="ticket-price" class="form-label">Ticket Price *</label>
+                <input type="number" step="0.01" class="form-control" id="ticket-price" name="ticket_price"
+                    placeholder="Price per ticket" value="{{ form.ticket_price.value }}" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="max-tickets" class="form-label">Max Tickets *</label>
+                <input type="number" class="form-control" id="max-tickets" name="max_tickets"
+                    placeholder="Maximum number of tickets available" value="{{ form.max_tickets.value }}" required>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-3">Update Event</button>
         </div>
     </form>
 </div>
 {% endblock %}
+

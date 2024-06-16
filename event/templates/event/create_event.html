@@ -28,17 +28,17 @@
                 <input type="text" class="form-control" id="event-name" name="event_name"
                     placeholder="Name of the event." required>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="col-md-6 mb-3">
                 <label for="event-date" class="form-label">Date *</label>
                 <input type="date" class="form-control" id="event-date" name="date" placeholder="Select a date."
                     required>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="col-md-6 mb-3">
                 <label for="event-start-time" class="form-label">Start Time *</label>
                 <input type="time" class="form-control" id="event-start-time" name="start_time"
                     placeholder="When the event starts?" required>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="col-md-6 mb-3">
                 <label for="event-end-time" class="form-label">End Time *</label>
                 <input type="time" class="form-control" id="event-end-time" name="end_time"
                     placeholder="When the event ends?" required>
@@ -80,6 +80,7 @@
                     placeholder="Who is organising this event?" required>
             </div>
         </div>
+
         <div class="mb-3">
             <label for="event-description" class="form-label">Description *</label>
             <textarea class="form-control" id="event-description" name="event_description" rows="5" required
@@ -99,22 +100,35 @@
         <div class="mb-4">
 
 
+
+            <input type="hidden" id="id_event_image" name="event_image">
+            <button type="button" id="upload_widget" class="btn btn-outline-light btn-lg btn-block mt-3">Upload
+                Image</button>
             <div class="form-text" id="uploadStatusText">
                 Click the button to upload your event image. For best results, please ensure the image is sized at
                 1024x1024 pixels.
             </div>
-            <input type="hidden" id="id_event_image" name="event_image">
-            <button type="button" id="upload_widget" class="btn btn-outline-light btn-lg btn-block mt-3">Upload
-                Image</button>
+        </div>
+        <div class="row">
+            <h2>Ticket Info</h2>
+            <div class="col-md-6 mb-3">
+                <label for="ticket-price" class="form-label">Ticket Price *</label>
+                <input type="number" step="0.01" class="form-control" id="ticket-price" name="ticket_price"
+                    placeholder="Price per ticket" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="max-tickets" class="form-label">Max Tickets *</label>
+                <input type="number" class="form-control" id="max-tickets" name="max_tickets"
+                    placeholder="Maximum number of tickets available" required>
+            </div>
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-3">Upload Event</button>
         </div>
-        
+
     </form>
 </div>
 {% endblock %}
-
 {% block postloadjs %}
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script type="text/javascript">
