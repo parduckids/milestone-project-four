@@ -17,10 +17,23 @@
         <div class="col">
             <div class="position-relative square-container">
                 <div class="date-overlay p-2">{{ event.date }}</div>
+                <div class="city-overlay p-2">{{ event.city }}</div>
                 <img src="{{ event.event_image }}" class="square-image" alt="Event Image">
                 <div class="featured-badge">Featured</div>
             </div>
             <div class="card-body mt-2 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <!-- change the color depending on the genre -->
+                    <a href="#" class="badge text-decoration-none mb-2
+                        {% if event.genre == 'techno' %}bg-dark
+                        {% elif event.genre == 'experimental' %}bg-warning
+                        {% elif event.genre == 'noise' %}bg-danger
+                        {% elif event.genre == 'house' %}bg-success
+                        {% else %}bg-secondary{% endif %}">
+                        {{ event.genre }}
+                    </a>
+                    <p class="card-text mb-1">{{ event.organiser }}</p>
+                </div>
                 <h5 class="card-title">{{ event.event_name }}</h5>
                 <a href="#" class="btn btn-outline-warning btn-sm mt-2">
                     <span class="bi bi-ticket-fill me-1"></span> Get Tickets
@@ -29,7 +42,7 @@
                     <span class="bi bi-calendar-event me-1"></span> Tell me more
                 </a>
             </div>
-            
+
         </div>
         {% endfor %}
     </div>

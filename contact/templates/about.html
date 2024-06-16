@@ -9,7 +9,7 @@
 <div class="container mt-5">
     <h2 class="mb-5">Your Gateway to the Underground Music Scene</h2>
     <div class="row">
-        <div class="col-7">
+        <div class="col-md-7">
             <p>
                 Welcome to Subsurface, the ultimate destination for underground music events and ticket sales in the UK's major
                 cities. Our focus is on the raw, unfiltered sounds of techno, house, noise, and experimental music. While there
@@ -17,27 +17,27 @@
                 to fill that void, bringing you closer to the music that matters.
             </p>
         </div>
-    <div class="col-5">
+    <div class="col-md-5">
         <p>
             Whether you're a devoted fan of the underground or a curious newcomer, Subsurface offers an unparalleled
             selection of events that are often overlooked by mainstream platforms. Join us and immerse yourself in the
             vibrant, pulsating heart of the UK's underground music culture.
         </p>
     </div>
-    <h2>Contact Us</h2>
+    <h2 class="mt-4">Contact Us</h2>
     <p>
         If you have any questions, concerns, or require a refund, please don't hesitate to contact us. We are here to help and ensure you have the best experience possible with Subsurface.
     </p>
     <form method="post" action="{% url 'about' %}">
         {% csrf_token %}
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" required>
