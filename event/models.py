@@ -25,6 +25,10 @@ class Event(models.Model):
     music = models.URLField(max_length=200, blank=True, null=True)
     event_image = models.CharField(max_length=255, blank=True, null=True)
     featured = models.BooleanField(default=False)
+    # extend event model with ticket price for each event
+    ticket_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    # extend event model with max tickets sold
+    max_tickets = models.PositiveIntegerField(default=100)
 
     def __str__(self):
         return self.event_name
