@@ -102,10 +102,9 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
 ]
-
+# stripe keys
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
-STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 
 # Set cloud_name for cloudinary uploads
 # todo : add env.py file later
