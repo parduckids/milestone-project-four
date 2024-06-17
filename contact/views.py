@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from .models import ContactMessage  
 
 def about(request):
+    """ A view to return the about page with the contact form """
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')

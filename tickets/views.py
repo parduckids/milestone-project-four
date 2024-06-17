@@ -12,6 +12,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required
 def buy_ticket(request, event_id):
+    """ A view for buy ticket page with stripe payments """
     event = get_object_or_404(Event, event_id=event_id)
     remaining_tickets = event.remaining_tickets
 
@@ -69,6 +70,7 @@ def buy_ticket(request, event_id):
     return render(request, 'buy_ticket.html', context)
 
 def success(request):
+    """ A view for success page after stripe payments """
     # retrieve purchase data from session
     purchase_data = request.session.get('purchase_data')
 
@@ -92,11 +94,13 @@ def success(request):
     return redirect('/mytickets')
 
 def cancel(request):
+    """ A view for cancelled stripe payments """
     messages.warning(request, 'Your ticket purchase was canceled.')
     return redirect('/')
 
 @login_required
 def mytickets(request):
+    """ A view for my tickets page where logged in users can see their tickets """
     user = request.user
     tickets = Ticket.objects.filter(user=user).select_related('event')
      # create a list of numbers for each ticket

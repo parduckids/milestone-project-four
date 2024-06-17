@@ -14,11 +14,13 @@ def is_administrator(user):
     """ A view to check if the user has admin rights """
     return user.is_authenticated and user.username == 'administrator'
 
+# home page
 def index(request):
     """ A view to return the index page with only featured events """
     featured_events = Event.objects.filter(featured=True)
     return render(request, 'event/index.html', {'events': featured_events})
-# todo: filtering events 
+
+# all events page
 def events(request):
     """ A view to return the events page with filtering """
     # check if event is in the past, only return current or future ones
@@ -39,10 +41,11 @@ def events(request):
 
     # render the template with the filtered events
     return render(request, 'event/events.html', {'events': events})
+
+# create event page for the administrator
 @user_passes_test(is_administrator)
 def create_event(request):
     """ A view to return the create event page """
-    # todo: only allow this to the admin user
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
@@ -55,14 +58,14 @@ def create_event(request):
         form = EventForm()
     return render(request, 'event/create_event.html', {'form': form})
 
-# todo: filtering events 
+# manage event page for the administrator
 @user_passes_test(is_administrator)
 def manage_events(request):
     """ A view to return the manage events page """
     events = Event.objects.all()
     return render(request, 'event/manage.html', {'events': events})
 
-# todo: event data doesn't show on edit event page when normal layout is set, layout needs to be changed, image should be shown
+# edit each event page for the administrator
 @user_passes_test(is_administrator)
 def edit_event(request, event_id):
     """ A view to return the edit event page """
@@ -79,9 +82,7 @@ def edit_event(request, event_id):
         form = EventForm(instance=event)
     return render(request, 'event/edit_event.html', {'form': form, 'event': event})
 
-
-# todo: event data doesn't show on delete event page
-
+# delete event page for the administrator with confirmation 
 @user_passes_test(is_administrator)
 def delete_event(request, event_id):
     """ A view for deleting an event """
@@ -92,7 +93,7 @@ def delete_event(request, event_id):
         return redirect('manage')
     return render(request, 'event/delete_event.html', {'event': event})
 
-# todo: set up tickets app
+# event detail page for each event
 def event_detail(request, event_id):
     """ A view to return the event detail pages """
     event = get_object_or_404(Event, event_id=event_id)

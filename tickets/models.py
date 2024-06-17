@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from event.models import Event
 
+
+# set up model for tickets with 2 foreign keys
 class Ticket(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)

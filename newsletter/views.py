@@ -4,10 +4,12 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .forms import SubscribeForm
 
+# if user clicked the subscribe button
 def subscribe(request):
     if request.method == "POST":
         form = SubscribeForm(request.POST)
         if form.is_valid():
+            # save data 
             form.save()
             messages.success(request, 'Thank you for subscribing!')
              # send confirmation email

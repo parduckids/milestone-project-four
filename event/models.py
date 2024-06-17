@@ -1,14 +1,10 @@
 from django.db import models
-
-# Event Model
-
 from django.db import models
 from django.utils import timezone
 from cloudinary.models import CloudinaryField
 
-# todo: set up default values for genre city, organiser
+# event Model
 class Event(models.Model):
-    # Fields
     event_id = models.AutoField(primary_key=True)
     event_name = models.CharField(max_length=200)
     genre = models.CharField(max_length=100)
@@ -63,6 +59,7 @@ class Event(models.Model):
 
     @property
     def remaining_tickets(self):
+        # calculate remaining tickets
         tickets_bought = self.ticket_set.aggregate(total_quantity=models.Sum('quantity'))
         total_tickets_bought = tickets_bought['total_quantity'] or 0
         return self.max_tickets - total_tickets_bought

@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path
 from .import views
 
-
+# set up urls for all pages in the event app
 urlpatterns = [
     path('', views.index, name='index'),
     path('events', views.events, name='events'),
