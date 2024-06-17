@@ -25,3 +25,8 @@ urlpatterns = [
     path('', include('contact.urls')),
     path('', include('tickets.urls')),
 ]
+# add differrent error page urls for common errors
+handler404 = 'subsurface.views.custom_404'
+handler500 = 'subsurface.views.custom_500'
+handler403 = 'subsurface.views.custom_403'
+handler400 = 'subsurface.views.custom_400'
