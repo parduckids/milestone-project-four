@@ -32,15 +32,19 @@ h1 {
     font-weight: bold;
     color: #fff !important;
 }
-.navbar-toggler{
+
+.navbar-toggler {
     background-color: white !important;
 }
-.navbar-toggler:hover{
+
+.navbar-toggler:hover {
     filter: brightness(90%);
 }
-.navbar-toggler:focus{
+
+.navbar-toggler:focus {
     box-shadow: 0 0 0 0 !important;
 }
+
 .nav-link {
     color: #fff !important;
     transition: color 0.3s ease;
@@ -84,6 +88,7 @@ h1 {
     border-radius: 5px;
     z-index: 1;
 }
+
 .city-overlay {
     position: absolute;
     font-size: 0.9em;
@@ -99,9 +104,11 @@ h1 {
 .card-body {
     background-color: transparent
 }
-.badge:hover{
+
+.badge:hover {
     color: black !important;
 }
+
 .card-text {
     font-size: 0.9em;
     font-weight: 500;
@@ -145,7 +152,7 @@ body {
     flex: 1;
 }
 
-.table{
+.table {
     background-color: white !important;
 }
 
@@ -178,3 +185,67 @@ footer .btn-outline-light:hover {
     color: #333 !important;
 }
 
+
+/* QR carousel */
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 7%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.carousel-inner {
+    padding: 20px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.modal-title small {
+    font-size: 1rem;
+}
+
+@media (max-width: 576px) {
+    .modal-title {
+        font-size: 1.25rem;
+    }
+
+    .modal-title small {
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-title {
+        font-size: 1.75rem;
+    }
+
+    .modal-title small {
+        font-size: 1.125rem;
+    }
+}
+
+
+/* remove extra gutter for phones */
+@media (max-width: 576px) {
+
+    .g-5,
+    .gy-5 {
+        --bs-gutter-y: 0 !important;
+    }
+
+    .g-5,
+    .gx-5 {
+        --bs-gutter-x: 0 !important;
+    }
+    .ticket-form{
+        margin-top: 20px;
+    }
+}

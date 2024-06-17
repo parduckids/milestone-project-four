@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container mt-5 sexy-font">
     <h1>Your Tickets</h1>
-    <p class="text-muted">Here are the events you have bought tickets for:</p>
+    <p class="text-muted">Here are the events you have bought tickets for, including past events:</p>
 </div>
 
 <div class="container mt-4">
@@ -12,11 +12,13 @@
         {% for ticket in tickets %}
         <div class="col">
             <div class="card h-100">
-                {% if event.event_image and event.event_image != "None" %}
-                <img src="{{ event.event_image }}" class="card-img-top" alt="Event Image">
-                {% else %}
-                <img src="{% static 'images/default.png' %}" class="card-img-top" alt="Default Event Image">
-                {% endif %}
+                <div class="card-img-container">
+                    {% if ticket.event.event_image and ticket.event.event_image != "None" %}
+                    <img src="{{ ticket.event.event_image }}" class="card-img-top" alt="Event Image">
+                    {% else %}
+                    <img src="{% static 'images/default.png' %}" class="card-img-top" alt="Default Event Image">
+                    {% endif %}
+                </div>
                 <div class="card-body" style="color: black !important;">
                     <h5 class="card-title">{{ ticket.event.event_name }}</h5>
                     <p class="card-text">{{ ticket.event.address }}, {{ ticket.event.organiser }}</p>
@@ -36,16 +38,18 @@
             </div>
         </div>
 
-        <!-- qr code for tickets -->
+        <!-- QR code for tickets -->
         <div class="modal fade" id="qrModal{{ ticket.id }}" tabindex="-1" aria-labelledby="qrModalLabel{{ ticket.id }}"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header" style="color: black !important;">
                         <h5 class="modal-title" id="qrModalLabel{{ ticket.id }}">Your Ticket(s) for:
-                            {{ ticket.event.event_name }}<br> <small style="font-size: 0.8em !important;">Please show
-                                the QR code(s) below at the entrance:</small></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            {{ ticket.event.event_name }}<br>
+                            <small>Please show the QR code(s) below at the entrance:</small>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            style="position: absolute; top: 15px; right: 15px;"></button>
                     </div>
                     <div class="modal-body text-center">
                         <div id="qrCarousel{{ ticket.id }}" class="carousel slide" data-bs-ride="carousel">
@@ -59,12 +63,12 @@
                                 {% endfor %}
                             </div>
                             {% if ticket.quantity > 1 %}
-                            <button class="carousel-control-prev" type="button"
+                            <button class="carousel-control-prev custom-carousel-control" type="button"
                                 data-bs-target="#qrCarousel{{ ticket.id }}" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button"
+                            <button class="carousel-control-next custom-carousel-control" type="button"
                                 data-bs-target="#qrCarousel{{ ticket.id }}" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>

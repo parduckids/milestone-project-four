@@ -5,8 +5,9 @@ from .models import Event
 from django.utils import timezone
 # import allauth decorator to check if admin is logged in, add it to all admin restricted views
 from django.contrib.auth.decorators import user_passes_test
+# import messages
+from django.contrib import messages
 
-# todo, add 404, 302 etc pages... 
 
 # check if username is administrator
 def is_administrator(user):
@@ -46,9 +47,10 @@ def create_event(request):
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('events')
+            messages.success(request, 'New event uploaded successfully.')
+            return redirect('manage')
         else:
-            print(form.errors)  
+            messages.error(request, 'There was an error uploading the event.')
     else:
         form = EventForm()
     return render(request, 'event/create_event.html', {'form': form})
@@ -69,7 +71,10 @@ def edit_event(request, event_id):
         form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             form.save()
-            return redirect('manage')  # Change 'manage' to your desired redirect URL
+            messages.success(request, 'Event edited successfully.')
+            return redirect('manage')
+        else:
+            messages.error(request, 'There was an error editing the event.')
     else:
         form = EventForm(instance=event)
     return render(request, 'event/edit_event.html', {'form': form, 'event': event})
@@ -83,6 +88,7 @@ def delete_event(request, event_id):
     event = get_object_or_404(Event, event_id=event_id)
     if request.method == 'POST':
         event.delete()
+        messages.success(request, 'Event deleted successfully.')
         return redirect('manage')
     return render(request, 'event/delete_event.html', {'event': event})
 

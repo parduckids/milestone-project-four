@@ -16,14 +16,14 @@ Buy Tickets - {{ event.event_name }}
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-5">
+        <div class="col-md-5">
             {% if event.event_image and event.event_image != "None" %}
                 <img src="{{ event.event_image }}" class="img-fluid w-100" alt="Event Image">
             {% else %}
                 <img src="{% static 'images/default.png' %}" class="img-fluid w-100" alt="Default Event Image">
             {% endif %}
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 ticket-form">
             <!-- ticket form -->
             <h2>Purchase Tickets</h2>
             {% if remaining_tickets > 0 %}
