@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 import cloudinary
 import django_heroku
+# if env.py available, import it
 try:
     import env 
 except ImportError:
@@ -74,13 +75,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # todo: live version --> send emails for real
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-relay.brevo.com'
-EMAIL_PORT = 587 
-EMAIL_USE_TLS = True 
-EMAIL_HOST_USER = '76cdf3001@smtp-brevo.com'
-EMAIL_HOST_PASSWORD = 'myYHEVr5GMItN068'
-
-DEFAULT_FROM_EMAIL = 'info@damros.com'
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp-relay.brevo.com')
+EMAIL_PORT = os.environ.get('EMAIL_PORT', 587)
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ['true', '1', 't']
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'info@damros.com')
 
 
 
@@ -100,7 +100,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',  # Ensure this is included
+    'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -115,7 +115,6 @@ INSTALLED_APPS = [
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 
-# Set cloud_name for cloudinary uploads
 # todo : add env.py file later
 cloudinary.config(
     cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME')
@@ -159,13 +158,14 @@ WSGI_APPLICATION = 'subsurface.wsgi.application'
 
 # live db
 # todo: hide secret info
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'zivbjfgw'),
-        'USER': os.environ.get('DB_USER', 'zivbjfgw'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'BLsUUlDgjMsz6OVT3VpU1r7IeWc2WEhc'),
-        'HOST': os.environ.get('DB_HOST', 'lucky.db.elephantsql.com'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
         'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
