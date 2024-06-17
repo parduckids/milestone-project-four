@@ -69,6 +69,9 @@
                         </li>
                         {% endif %}
                         {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'mytickets' %}">My Tickets</a>
+                        </li>
                         {% if user.is_authenticated and user.username == "administrator" %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'create' %}">Add Events</a>
