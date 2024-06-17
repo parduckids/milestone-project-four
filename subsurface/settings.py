@@ -70,12 +70,17 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # send emails to console 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # todo: live version --> send emails for real
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp-relay.brevo.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_PORT = 587 
+EMAIL_USE_TLS = True 
+EMAIL_HOST_USER = '76cdf3001@smtp-brevo.com'
+EMAIL_HOST_PASSWORD = 'myYHEVr5GMItN068'
+
+DEFAULT_FROM_EMAIL = 'info@damros.com'
 
 
 
