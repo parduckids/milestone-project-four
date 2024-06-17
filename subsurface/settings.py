@@ -1,14 +1,12 @@
 from pathlib import Path
 import os
 import cloudinary
-# add heroku and env imports
 import django_heroku
-import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# static files settings
+# Static files settings
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / "static"]
@@ -38,7 +36,7 @@ DEBUG = os.environ.get("DEBUG", 'False').lower() in ['true', '1', 't']
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
 
-# make sure that csrf set up correctly
+# Ensure each origin starts with a scheme
 CSRF_TRUSTED_ORIGINS = [
     origin if origin.startswith('http://') or origin.startswith('https://') else f'http://{origin}'
     for origin in CSRF_TRUSTED_ORIGINS if origin
@@ -93,7 +91,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  # Ensure this is included
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -112,7 +110,7 @@ STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 # Set cloud_name for cloudinary uploads
 # todo : add env.py file later
 cloudinary.config(
-    cloud_name=os.getenv('CLOUD_NAME')
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME')
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -152,7 +150,7 @@ WSGI_APPLICATION = 'subsurface.wsgi.application'
 # }
 
 # live db
-# todo: hide secret info !!!
+# todo: hide secret info
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
