@@ -70,7 +70,12 @@
             <div class="position-relative square-container">
                 <div class="date-overlay p-2">{{ event.formatted_date }}</div>
                 <div class="city-overlay p-2">{{ event.city }}</div>
-                <img src="{{ event.event_image }}" class="square-image" alt="Event Image">
+                <!-- if user forgot to add image use default image -->
+                {% if event.event_image and event.event_image != "None" %}
+                    <img src="{{ event.event_image }}" class="square-image" alt="Event Image">
+                {% else %}
+                    <img src="{% static 'images/default.png' %}" class="square-image" alt="Default Event Image">
+                {% endif %}
             </div>
             <div class="card-body mt-2 text-center">
                 <div class="d-flex align-items-center justify-content-center">

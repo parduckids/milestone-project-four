@@ -12,7 +12,11 @@
         {% for ticket in tickets %}
         <div class="col">
             <div class="card h-100">
-                <img src="{{ ticket.event.event_image }}" class="card-img-top" alt="Event Image">
+                {% if event.event_image and event.event_image != "None" %}
+                <img src="{{ event.event_image }}" class="card-img-top" alt="Event Image">
+                {% else %}
+                <img src="{% static 'images/default.png' %}" class="card-img-top" alt="Default Event Image">
+                {% endif %}
                 <div class="card-body" style="color: black !important;">
                     <h5 class="card-title">{{ ticket.event.event_name }}</h5>
                     <p class="card-text">{{ ticket.event.address }}, {{ ticket.event.organiser }}</p>
@@ -55,13 +59,13 @@
                                 {% endfor %}
                             </div>
                             {% if ticket.quantity > 1 %}
-                            <button class="carousel-control-prev" type="button" data-bs-target="#qrCarousel{{ ticket.id }}"
-                                data-bs-slide="prev">
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#qrCarousel{{ ticket.id }}" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#qrCarousel{{ ticket.id }}"
-                                data-bs-slide="next">
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#qrCarousel{{ ticket.id }}" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>

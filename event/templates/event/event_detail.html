@@ -1,5 +1,6 @@
 <!-- templates/event_detail.html -->
 {% extends 'base.html' %}
+{% load static %}
 
 {% block extra_title %}
 {{ event.event_name }}
@@ -16,7 +17,12 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-12">
-            <img src="{{ event.event_image }}" class="img-fluid w-100" alt="Event Image">
+            <!-- if user forgot to add image use default image -->
+            {% if event.event_image and event.event_image != "None" %}
+                <img src="{{ event.event_image }}" class="img-fluid w-100" alt="Event Image">
+            {% else %}
+                <img src="{% static 'images/default.png' %}" class="img-fluid w-100" alt="Default Event Image">
+            {% endif %}
         </div>
     </div>
 </div>
@@ -70,7 +76,7 @@
                     <td>£ {{ event.ticket_price }}</td>
                 </tr>
             </table>
-            
+
             <a href="{% url 'buy_ticket' event.event_id %}" class="btn btn-outline-warning btn-lg btn-block mt-3">
                 <span class="bi bi-ticket-fill me-1"></span> Get Tickets
             </a>
