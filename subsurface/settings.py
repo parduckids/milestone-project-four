@@ -27,19 +27,14 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$cr*b^(kw6s=@&-o^#^ehn_#q%!r-u1#)-)y0c86n))-47#v2j'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", False)
 
-ALLOWED_HOSTS = [
-    '8000-parduckids-milestonepro-8qpgd972xo7.ws-eu114.gitpod.io',
-    '8000-parduckids-milestonepro-rl583zc92m7.ws-eu114.gitpod.io',
-    '8000-parduckids-milestonepro-vz1kcc6hqu6.ws-eu114.gitpod.io'
-    ]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
 # Add CSRF trusted link
-CSRF_TRUSTED_ORIGINS = ['https://8000-parduckids-milestonepro-rl583zc92m7.ws-eu114.gitpod.io',
-'https://8000-parduckids-milestonepro-vz1kcc6hqu6.ws-eu114.gitpod.io']
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(",")
 
 SITE_ID = 1
 
@@ -68,8 +63,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'your_email@gmail.com'
-# EMAIL_HOST_PASSWORD = 'your_email_password'
+# EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+# EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = 'ads.voros@gmail.com'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -104,7 +99,9 @@ INSTALLED_APPS = [
     
 ]
 
-
+STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 
 
 # Set cloud_name for cloudinary uploads
@@ -154,10 +151,24 @@ WSGI_APPLICATION = 'subsurface.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# local db
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# live db
+# todo: hide secret info
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'zivbjfgw',
+        'USER': 'zivbjfgw',
+        'PASSWORD': 'BLsUUlDgjMsz6OVT3VpU1r7IeWc2WEhc',
+        'HOST': 'lucky.db.elephantsql.com',
+        'PORT': '5432',
     }
 }
 
