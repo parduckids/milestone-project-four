@@ -98,7 +98,7 @@
         </div>
 
         <div class="mb-4">
-            <input type="hidden" id="id_event_image" name="event_image">
+            <input type="hidden" id="id_event_image" name="event_image" value="https://i.ibb.co/pK1GWtT/default.png">
             <button type="button" id="upload_widget" class="btn btn-outline-light btn-lg btn-block mt-3">Upload
                 Image</button>
             <div class="form-text" id="uploadStatusText">
@@ -109,15 +109,27 @@
         <div class="row">
             <h2>Ticket Info</h2>
             <div class="col-md-6 mb-3">
+                <!-- making sure that no negative values allowed -->
                 <label for="ticket-price" class="form-label">Ticket Price *</label>
                 <input type="number" step="0.01" class="form-control" id="ticket-price" name="ticket_price"
-                    placeholder="Price per ticket" required>
+                       placeholder="Price per ticket" required min="0" oninput="validateTicketPrice(this)">
             </div>
+
+            <script>
+                function validateTicketPrice(input) {
+                    // ensure value is non-negative
+                    if (input.value < 0) {
+                        input.value = 0;
+                    }
+                }
+            </script>
             <div class="col-md-6 mb-3">
+                <!-- validation to make sure only positive whole numbers used -->
                 <label for="max-tickets" class="form-label">Max Tickets *</label>
                 <input type="number" class="form-control" id="max-tickets" name="max_tickets"
-                    placeholder="Maximum number of tickets available" required>
+                       placeholder="Maximum number of tickets available" required min="1" step="1" oninput="validateMaxTickets(this)">
             </div>
+            
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-outline-warning btn-lg btn-block mt-3">Upload Event</button>
@@ -147,5 +159,22 @@
     document.getElementById("upload_widget").addEventListener("click", function () {
         myWidget.open();
     }, false);
+
+
+    function validateTicketPrice(input) {
+        // make sure that the value is non-negative
+        if (input.value < 0) {
+            input.value = 0;
+        }
+    }
+    function validateMaxTickets(input) {
+        // make sure that the value is a whole positive number
+        if (input.value < 1) {
+            input.value = 1;
+        } else {
+            input.value = Math.floor(input.value);
+        }
+    }
 </script>
+
 {% endblock %}
