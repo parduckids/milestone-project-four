@@ -191,22 +191,22 @@ footer .btn-outline-light:hover {
 
 .carousel-control-prev,
 .carousel-control-next {
-    width: 7%;
+    width: 7% !important;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: #000;
-    padding: 10px;
-    border-radius: 50%;
+    background-color: #000 !important;
+    padding: 10px !important;
+    border-radius: 50% !important;
 }
 
 .carousel-inner {
-    padding: 20px;
+    padding: 20px !important; 
 }
 
 .modal-title {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
 }
 
 .modal-title small {
