@@ -18,9 +18,9 @@ Buy Tickets - {{ event.event_name }}
     <div class="row">
         <div class="col-md-5">
             {% if event.event_image and event.event_image != "None" %}
-                <img src="{{ event.event_image }}" class="img-fluid w-100" alt="Event Image">
+            <img src="{{ event.event_image }}" class="img-fluid w-100" alt="Event Image">
             {% else %}
-                <img src="{% static 'images/default.png' %}" class="img-fluid w-100" alt="Default Event Image">
+            <img src="{% static 'images/default.png' %}" class="img-fluid w-100" alt="Default Event Image">
             {% endif %}
         </div>
         <div class="col-md-6 ticket-form">
@@ -33,11 +33,21 @@ Buy Tickets - {{ event.event_name }}
                     <label for="username" class="form-label">Username</label>
                     <input type="text" id="username" class="form-control" value="{{ request.user.username }}" readonly>
                 </div>
-                <div class="mb-3">
-                    <label for="quantity" class="form-label">Quantity</label>
-                    <input type="number" id="quantity" name="quantity" class="form-control" min="1" value="1">
-                </div>
-                <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <select id="quantity" name="quantity" class="form-control">
+                    <!-- options for quantity -->
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <div class="mt-3">
                     <label for="total_price" class="form-label">Total Price</label>
                     <input type="text" id="total_price" class="form-control" value="£ {{ event.ticket_price }}"
                         readonly>
@@ -50,7 +60,7 @@ Buy Tickets - {{ event.event_name }}
             </form>
             <p class="mt-2">There are {{ remaining_tickets }} tickets left for this event.</p>
             {% else %}
-                <p>Sorry, this event is sold out.</p>
+            <p>Sorry, this event is sold out.</p>
             {% endif %}
         </div>
 
@@ -105,4 +115,4 @@ Buy Tickets - {{ event.event_name }}
         });
     });
 </script>
-{% endblock %}
+    {% endblock %}

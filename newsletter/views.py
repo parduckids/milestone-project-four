@@ -6,6 +6,7 @@ from .forms import SubscribeForm
 
 # if user clicked the subscribe button
 def subscribe(request):
+    """ A view for newsletter subscription """
     if request.method == "POST":
         form = SubscribeForm(request.POST)
         if form.is_valid():
