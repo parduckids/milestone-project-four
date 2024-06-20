@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import sys
 import cloudinary
 import django_heroku
 # if env.py available, import it
@@ -7,7 +8,6 @@ try:
     import env
 except ImportError:
     env = None
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -193,3 +193,15 @@ try:
     django_heroku.settings(locals())
 except KeyError:
     pass  # Handle the missing 'MIDDLEWARE_CLASSES' issue gracefully
+
+
+
+# Testing
+IS_TESTING = 'test' in sys.argv
+
+if IS_TESTING:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+
