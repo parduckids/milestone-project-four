@@ -16,8 +16,6 @@
     + [Python Validation](#python-validation)
 - [Unfixed Issues](#unfixed-issues)
 - [Color Contrast Testing](#color-contrast-testing)
-    + [Navigation & Footer](#navigation-bar-and-footer)
-    + [Rest of the site](#rest-of-the-site)
 - [Manual Testing](#manual-testing)
     + [Testing Stripe](#stripe)
 - [Automated Testing](#automated-testing)
@@ -44,11 +42,11 @@
 - As an Event-goer, I want to see available dates so that I know the event is available when I book it.
     - The event details page clearly displays the available dates for the event, allowing event-goers to easily identify when the event is scheduled to take place and ensure it aligns with their availability.
 
--As an Event-goer, I want to see the number of available tickets for each event so that I know how many tickets are left before I make a decision.
+- As an Event-goer, I want to see the number of available tickets for each event so that I know how many tickets are left before I make a decision.
     - The event details page prominently shows the number of available tickets for the event, providing event-goers with real-time information about ticket availability and helping them make timely decisions to secure their desired tickets.
 
 
-### Registration and User Accounts
+### Registration and User Accounts
 
 - As a Registered User, I want to easily register for an account so that I can have a personal account for keeping track of my tickets.
     -The registration process is straightforward and user-friendly, requiring only essential information such as username, email address, and password. Upon successful registration, users can log in, buy tickets and use their tickets on the My Tickets page.
@@ -71,12 +69,12 @@
 - As a Registered User, I want to sign out so that I can securely log out of my account.
     - The user page and navigation menu include a prominently displayed "Sign Out" or "Log Out" button or link, allowing registered users to securely log out of their account with a single click, ensuring the security of their session.
 
-### Sorting and Searching
+### Sorting and Searching
 -   As an Event-goer, I want to sort/filter events by dedicated filters (e.g., city, date, genre) so that I can easily identify suitable options for my experience.
     - The events page provides a set of dedicated filters, such as city, date, and genre, which event-goers can use to narrow down the list of events based on their preferences. The filters are intuitive and user-friendly, allowing users to select multiple criteria and dynamically update the displayed events accordingly.
 
 
-### Purchasing and Checkout
+### Purchasing and Checkout
 
 - As an Event-goer, I want to select the event I want and book through the event page so that I can start the booking process.
     - Event-goers can select the desired ticket quantity on the event details page and proceed to the booking process by clicking the "Get Tickets" button.
@@ -198,20 +196,29 @@ No issues were encountered during browser testing.
 ![image](/static/testing/x-in-text.png)
 
 - Link a little bit too close to the text under it 
-![image](/static/testing/too-much-padding.png)
 
-- My tickets ticket cards images aren't the same size, creating an extra padding on smaller image size events, this could be fixed by adding 1024x1024 images for events which is advised on the site
 ![image](/static/testing/link-too-close.png)
 
+
+- My tickets ticket cards images aren't the same size, creating an extra padding on smaller image size events, this could be fixed by adding 1024x1024 images for events which is advised on the site
+
+![image](/static/testing/too-much-padding.png)
+
+
 # Color Contrast Testing
-
-## Navigation Bar and Footer
-
-## Rest of the site
+- Calculating contrast ratio with [Coolors](https://coolors.co/contrast-checker/112a46-acc8e5)
+![image](/static/testing/color-contrast.png)
 
 # Manual Testing
+
+- I thoroughly tested the website's functionality by clicking every button, link, and interactive element on each page. I navigated through the site, checking the responsiveness, event browsing, filtering, user registration, account management, and ticket purchasing features. All components worked as expected, ensuring a smooth user experience.
+
 ## Stripe
-- Test if the payment went through and include screenshot of stripe dashboard 
+![image](/static/testing/buy-ticket-1.png)
+![image](/static/testing/buy-ticket-2.png)
+![image](/static/testing/buy-ticket-3.png)
+![image](/static/testing/buy-ticket-4.png)
+
 
 # Automated Testing
 
