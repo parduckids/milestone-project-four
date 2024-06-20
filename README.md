@@ -540,7 +540,7 @@ DATABASES = {
   - For events and inspiration as well as event images
 
 
-## Ackowledgements
+## Acknowledgements
 - I'd like to thank to my mentor Chris Quinn for helping me make this project better.
 - Also thank you to Code Institute & Bristol College team , especially for Manuel Perez for continuous support.
 
