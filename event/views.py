@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import EventForm 
+from .forms import EventForm
 from .models import Event
 # import timezone to check if event is in the past
 from django.utils import timezone
@@ -15,12 +15,16 @@ def is_administrator(user):
     return user.is_authenticated and user.username == 'administrator'
 
 # home page
+
+
 def index(request):
     """ A view to return the index page with only featured events """
     featured_events = Event.objects.filter(featured=True)
     return render(request, 'event/index.html', {'events': featured_events})
 
 # all events page
+
+
 def events(request):
     """ A view to return the events page with filtering """
     # check if event is in the past, only return current or future ones
@@ -43,6 +47,8 @@ def events(request):
     return render(request, 'event/events.html', {'events': events})
 
 # create event page for the administrator
+
+
 @user_passes_test(is_administrator)
 def create_event(request):
     """ A view to return the create event page """
@@ -59,6 +65,8 @@ def create_event(request):
     return render(request, 'event/create_event.html', {'form': form})
 
 # manage event page for the administrator
+
+
 @user_passes_test(is_administrator)
 def manage_events(request):
     """ A view to return the manage events page """
@@ -66,6 +74,8 @@ def manage_events(request):
     return render(request, 'event/manage.html', {'events': events})
 
 # edit each event page for the administrator
+
+
 @user_passes_test(is_administrator)
 def edit_event(request, event_id):
     """ A view to return the edit event page """
@@ -82,7 +92,9 @@ def edit_event(request, event_id):
         form = EventForm(instance=event)
     return render(request, 'event/edit_event.html', {'form': form, 'event': event})
 
-# delete event page for the administrator with confirmation 
+# delete event page for the administrator with confirmation
+
+
 @user_passes_test(is_administrator)
 def delete_event(request, event_id):
     """ A view for deleting an event """
@@ -94,6 +106,8 @@ def delete_event(request, event_id):
     return render(request, 'event/delete_event.html', {'event': event})
 
 # event detail page for each event
+
+
 def event_detail(request, event_id):
     """ A view to return the event detail pages """
     event = get_object_or_404(Event, event_id=event_id)
@@ -103,5 +117,3 @@ def event_detail(request, event_id):
         'artist_list': artist_list,
     }
     return render(request, 'event/event_detail.html', context)
-
-    

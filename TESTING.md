@@ -70,11 +70,14 @@
 
 
 ## CSS Validation  
+![image](/static/testing/css-test.png)
 
 ## Javascript Validation
+### All custom JS code has been tested with [JSHint](https://jshint.com/)
+![image](/static/testing/jshint.png)
 
 ## Python Validation
-
+- All Python files (except setting files) has been checked using a PEP8 linter to make sure they are compliant.
 # Bugs & Issues
 
 ## Fixed

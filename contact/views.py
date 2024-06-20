@@ -2,7 +2,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from .models import ContactMessage  
+from .models import ContactMessage
+
 
 def about(request):
     """ A view to return the about page with the contact form """
@@ -26,10 +27,12 @@ def about(request):
             recipients = [settings.DEFAULT_FROM_EMAIL]
             try:
                 send_mail(subject, message, email, recipients)
-                messages.success(request, 'Your message has been sent successfully!')
+                messages.success(
+                    request, 'Your message has been sent successfully!')
                 return redirect('about')
             except Exception as e:
-                messages.error(request, 'There was an error sending your message: ' + str(e))
+                messages.error(
+                    request, 'There was an error sending your message: ' + str(e))
         else:
             messages.error(request, 'Please fill out all fields.')
 

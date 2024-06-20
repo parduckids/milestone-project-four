@@ -5,15 +5,17 @@ from django.conf import settings
 from .forms import SubscribeForm
 
 # if user clicked the subscribe button
+
+
 def subscribe(request):
     """ A view for newsletter subscription """
     if request.method == "POST":
         form = SubscribeForm(request.POST)
         if form.is_valid():
-            # save data 
+            # save data
             form.save()
             messages.success(request, 'Thank you for subscribing!')
-             # send confirmation email
+            # send confirmation email
             subject = 'Subsurface | Subscription Confirmation'
             message = 'Thank you for subscribing to our newsletter! Have a great day!'
             recipient_email = form.cleaned_data['email']
@@ -21,9 +23,11 @@ def subscribe(request):
             recipient_list = [recipient_email]
 
             try:
-                send_mail(subject, message, email_from, recipient_list, fail_silently=False)
+                send_mail(subject, message, email_from,
+                          recipient_list, fail_silently=False)
             except Exception as e:
-                messages.error(request, 'There was an error sending the confirmation email: {}'.format(e))
+                messages.error(
+                    request, 'There was an error sending the confirmation email: {}'.format(e))
             # set session variable to check subscription
             request.session['subscribed'] = True
             return redirect(request.META.get('HTTP_REFERER', '/'))

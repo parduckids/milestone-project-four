@@ -4,7 +4,7 @@ import cloudinary
 import django_heroku
 # if env.py available, import it
 try:
-    import env 
+    import env
 except ImportError:
     env = None
 
@@ -44,7 +44,8 @@ CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
 
 # Ensure each origin starts with a scheme
 CSRF_TRUSTED_ORIGINS = [
-    origin if origin.startswith('http://') or origin.startswith('https://') else f'http://{origin}'
+    origin if origin.startswith(
+        'http://') or origin.startswith('https://') else f'http://{origin}'
     for origin in CSRF_TRUSTED_ORIGINS if origin
 ]
 
@@ -70,18 +71,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# send emails to console 
+# send emails to console
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # todo: live version --> send emails for real
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp-relay.brevo.com')
 EMAIL_PORT = os.environ.get('EMAIL_PORT', 587)
-EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ['true', '1', 't']
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in [
+    'true', '1', 't']
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'info@damros.com')
-
 
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'

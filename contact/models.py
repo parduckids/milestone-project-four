@@ -1,5 +1,7 @@
 from django.db import models
 # set up db model for contact form
+
+
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     subject = models.CharField(max_length=100)
