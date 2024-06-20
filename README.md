@@ -3,7 +3,7 @@
   * [Live link](https://subsurface-03d2c6e34bd7.herokuapp.com/)
   * [Wireframes](#)
   * [GitHub Repository](https://github.com/parduckids/milestone-project-four)
-  * [Testing docs](#)
+  * [Testing docs](/TESTING.md)
 
 ![image](/static/readme/3-devices-black.png)
 
@@ -515,7 +515,7 @@ DATABASES = {
 
 
 # Testing
-[Testing docs](#)
+[Testing docs](/TESTING.md)
 
 - Automated testing with django inbuilt test system [unittest](https://docs.python.org/3/library/unittest.html#module-unittest)
 - Manual Testing
