@@ -15,6 +15,7 @@
 
 * "Subsurface" is developed as my Milestone Project 4 for the Code Institute's Diploma in Web Application Development course. This project incorporates a range of technologies, including HTML, CSS, JavaScript, Django, and PostgreSQL. Multiple Django apps were used to structure the application effectively, and Stripe integration was implemented to handle secure ticket transactions.
 ---
+- Please be aware that this web app was created as a portfolio project only, not for commercial or public use.
 
 ## Contents
 
@@ -297,6 +298,7 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
 
 # Tools & Documentations
 
+
 ## Payments 
 
 - [Stripe](https://stripe.com/gb)
@@ -353,6 +355,20 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
 **[Cloudinary](https://cloudinary.com/)**
 * Used for a smoother image upload user experience
 
+##  Documentations:
+
+
+* **[Bootstrap docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)**
+
+* **[Heroku docs](https://devcenter.heroku.com/articles/getting-started-with-python)**
+
+* **[jQuery docs](https://api.jquery.com/)**
+
+* **[Markdown docs](https://www.markdownguide.org/cheat-sheet/)**
+
+* **[Django](https://docs.djangoproject.com/en/5.0/)**
+
+* **[Django Allauth](https://django-allauth.readthedocs.io/en/latest/index.html)**
 
 
 
@@ -379,8 +395,124 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
 
 # Extra Features for the Future
 
+- **Unified Login/Register Page**: Combined login and register functionality on a single page with JavaScript switching.
+
+- **Account Deletion Option**: Allow users to delete their accounts.
+- **Media Widget Integration**: Embed iframes for YouTube, SoundCloud, and Spotify widgets on event detail pages.
+
+- **Event Organiser Accounts**: Event organiser accounts for venues and organisers with administrator access.
+
+- **Dynamic QR Codes**: Generate dynamic QR codes for each ticket, with a scannable page that shows event name, username, ticket quantity, and validity.
+
+- **User Profile Customization**: Allow users to customize their profiles with photos and personal information.
+
+- **Social Media Integration**: Enable users to share events on social media platforms directly from the site.
+
+- **Event Reviews and Ratings**: Allow users to leave reviews and ratings for events they have attended.
+
+- **Global Events**: Expand event listings to include global events, not just those in the UK.
+
 
 # Deployment
+
+## Running locally
+
+```python3 manage.py runserver```
+
+## Libraries
+```
+pip install django
+pip install cloudinary
+pip install django-allauth
+pip install stripe 
+pip install psycopg2
+pip install gunicorn dj-database-url psycopg2-binary
+pip install django-heroku
+```
+## env.py used for running the project locally
+```
+import os
+
+os.environ["ALLOWED_HOSTS"] = ""
+os.environ["CLOUDINARY_CLOUD_NAME"] = ""
+os.environ["CSRF_TRUSTED_ORIGINS"] = ""
+os.environ["DB_HOST"] = ""
+os.environ["DB_NAME"] = ""
+os.environ["DB_PASSWORD"] = ""
+os.environ["DB_PORT"] = ""
+os.environ["DB_USER"] = ""
+os.environ["DEBUG"] = ""
+os.environ["DEFAULT_FROM_EMAIL"] = ""
+os.environ["DISABLE_COLLECTSTATIC"] = ""
+os.environ["EMAIL_HOST_PASSWORD"] = ""
+os.environ["EMAIL_HOST_USER"] = ""
+os.environ["SECRET_KEY"] = ""
+os.environ["STRIPE_PUBLISHABLE_KEY"] = ""
+```
+- For deployment these are all set on Heroku
+
+## Initial Setup
+- The website is built using the [Code Institute's gitpod template](https://github.com/Code-Institute-Org/gitpod-full-template) provided for this project.
+- Development was carried out in [Gitpod](https://www.gitpod.io/), an online IDE linked to [GitHub](https://github.com/).
+
+## ElephantSQL Database Setup
+- **Navigate to ElephantSQL:** Log in via [ElephantSQL](https://www.elephantsql.com/) using the "Log in" button at the top right corner of the page.
+- **Sign in with GitHub:** Choose the GitHub option for authentication and authorize ElephantSQL to access your GitHub account.
+- **Create a New Team:** After logging in, add a team name, agree to the Terms of Service, confirm GDPR compliance, and provide your email.
+- **Create Database Instance:** Click "Create New Instance", select the "Tiny Turtle" plan, choose a data center, and finalize the instance creation.
+
+## Setting Up Gitpod with an External Database
+- Install Required Packages
+- In Gitpod, install psycopg2 by running the following command in the terminal:
+```pip3 install psycopg2```
+
+### Update Requirements
+- Add the newly installed package to your requirements.txt file by executing:
+```pip freeze > requirements.txt```
+
+### Modify settings.py
+- In your project's settings.py file, edit the DATABASES section to connect to your ElephantSQL database. Comment out the original sqlite3 configuration and replace it with the following code, ensuring to insert your actual ElephantSQL database URL. Do not commit this URL to your repository to avoid exposing sensitive information.
+
+```
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.sqlite3',
+'NAME': BASE_DIR / "db.sqlite3",
+}
+}
+```
+
+```
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.postgresql',
+'NAME': 'your-database-name',
+'USER': 'your-database-user',
+'PASSWORD': 'your-database-password',
+'HOST': 'your-database-host',
+'PORT': 'your-database-port',
+}
+}
+```
+
+### Check Database Connection
+- To verify that you are connected to the external database, run the following command in the terminal. You should see a list of all migrations printed:
+```python3 manage.py showmigrations```
+
+### Migrate Database Models
+- Apply migrations to your new database by executing:
+```python3 manage.py migrate```
+
+### Create a Superuser
+- Set up a superuser for your new database by running the following command. Follow the prompts to create a username and password. The email address can be left blank:
+```python3 manage.py createsuperuser```
+
+## Heroku Deployment
+- **Create Heroku App:** Log into [Heroku](https://www.heroku.com/) and create a new app, selecting the nearest region.
+- **Configure Database:** In Heroku app settings, reveal and set Config Vars as per the env.py on the local build. Copy the database URL from ElephantSQL to Heroku's DB config var.
+- **Connect to GitHub:** In the "Deploy" tab of your Heroku app, connect to your GitHub repository for automatic or manual deployment.
+- **Deploy:** Use the "Deploy Branch" button in Heroku to start the build and deploy process.
+
 
 # Testing
 [Testing docs](#)
@@ -411,6 +543,8 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
 ## Ackowledgements
 - I'd like to thank to my mentor Chris Quinn for helping me make this project better.
 - Also thank you to Code Institute & Bristol College team , especially for Manuel Perez for continuous support.
+
+Adam Voros | 2024
 
 
 
