@@ -224,4 +224,9 @@ No issues were encountered during browser testing.
 
 # LightHouse Testing
 
-# User Accounts for Testing
+## Home page
+## Events page
+## Event Detail page
+## About page
+
+Adam Voros | 2024

@@ -121,8 +121,8 @@
                                 {% url 'account_change_password' as change_password_url %}
                                 {% if change_password_url %}
                                 <li>
-                                    <a class="dropdown-item" href="{{ change_password_url }}">{% trans "Change Password"
-                                        %}</a>
+                                    <a class="dropdown-item" href="{{ change_password_url }}">
+                                        Change Password</a>
                                 </li>
                                 {% endif %}
                                 {% url 'mfa_index' as mfa_url %}
