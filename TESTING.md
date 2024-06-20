@@ -51,6 +51,24 @@
 
 ## HTML Validation
 
+### Home page
+- Issue:
+![image](/static/testing/index-error.png)
+- Fixed: 
+![image](/static/testing/index-fixed.png)
+[Code Changes](https://github.com/parduckids/milestone-project-four/commit/9971018719bc59ec2ba2cb9baab688bc7209870e)
+### Events page
+![image](/static/testing/events.png)
+### Event detail page
+![image](/static/testing/event.png)
+### Authentication
+- Issue:
+![image](/static/testing/login-error.png)
+- Fixed 
+![image](/static/testing/login-fixed.png)
+[Code Changes](https://github.com/parduckids/milestone-project-four/commit/dcca14c4a9c743314b557fc367099260bf1d4050)
+
+
 ## CSS Validation  
 
 ## Javascript Validation
