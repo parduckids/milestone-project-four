@@ -14,9 +14,7 @@
     + [CSS Validation](#css-validation)
     + [Javascript Validation](#javascript-validation)
     + [Python Validation](#python-validation)
-- [Bugs & Issues](#bugs-and-issues)
-    + [Fixed](#fixed)
-    + [Unfixed](#unfixed)
+- [Unfixed Issues](#unfixed-issues)
 - [Color Contrast Testing](#color-contrast-testing)
     + [Navigation & Footer](#navigation-bar-and-footer)
     + [Rest of the site](#rest-of-the-site)
@@ -45,7 +43,48 @@
 
 ## Device Compatibility Testing
 
+### Responsiveness
+* Responsiveness tests were done, using Google Chrome Developer Tools across different device screen sizes, including:
+
+- iPhone SE
+- iPhone 15 Pro
+- Pixel 5
+- iPad Mini
+- iPad Air
+- Surface Pro 7
+- Galaxy Fold
+- Samsung Galaxy A51/A71
+
+Additionally, I tested the website on the following physical devices:
+
+- iPhone 12 mini
+- Nokia G22
+- iPad Pro M3 
+- Macbook Pro 16"
+- Windows PC
+- Samsung widescreen monitor
+
+
+
 ## Browser Compatibility Testing
+
+The site was tested across different browsers to check compatibility:
+
+- **Desktop Browsers:**
+  - Google Chrome ( Mac OS)
+  - Microsoft Edge ( Windows )
+  - Mozilla Firefox
+  - Opera
+  - Brave
+
+- **Mobile and Tablet Browsers:**
+  - Google Chrome (Android)
+  - Safari (iOS)
+  - DuckDuckGo (iOS)
+  - Microsoft Edge (iOS)
+  - Mozilla Firefox (iOS)
+
+No issues were encountered during browser testing.
 
 # Code Review & Validation
 
@@ -78,11 +117,18 @@
 
 ## Python Validation
 - All Python files (except setting files) has been checked using a PEP8 linter to make sure they are compliant.
-# Bugs & Issues
+[Code Changes](https://github.com/parduckids/milestone-project-four/commit/20295f1c2794142e6566af648c06d9cb0bab9f46)
 
-## Fixed
+# Unfixed issues
 
-## Unfixed
+- On the 'My Tickets' page, the qr code closing icon is overlaying the event name on some events
+![image](/static/testing/x-in-text.png)
+
+- Link a little bit too close to the text under it 
+![image](/static/testing/too-much-padding.png)
+
+- My tickets ticket cards images aren't the same size, creating an extra padding on smaller image size events, this could be fixed by adding 1024x1024 images for events which is advised on the site
+![image](/static/testing/link-too-close.png)
 
 # Color Contrast Testing
 
