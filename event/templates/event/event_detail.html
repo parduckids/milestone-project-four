@@ -19,9 +19,9 @@
         <div class="col-12">
             <!-- if user forgot to add image use default image -->
             {% if event.event_image and event.event_image != "None" %}
-            <img src="{{ event.event_image }}" class="img-fluid w-100" alt="Event Image">
+                <img src="{{ event.event_image }}" class="img-fluid w-100" alt="Event Image">
             {% else %}
-            <img src="{% static 'images/default.png' %}" class="img-fluid w-100" alt="Default Event Image">
+                <img src="{% static 'images/default.png' %}" class="img-fluid w-100" alt="Default Event Image">
             {% endif %}
         </div>
     </div>
@@ -42,9 +42,7 @@
             </ul>
             <p>Don't miss out on this unique event that pushes the boundaries of music and art. Get your tickets now and
                 be part of an extraordinary night!</p>
-            {% if event.music != "None" %}
-                <a href="{{ event.music }}" target="_blank">Listen here</a>
-            {% endif %}
+            <a href="{{ event.music }}" target="_blank">Listen here</a>
         </div>
         <div class="col-md-4">
             <h2>Event Details</h2>
