@@ -225,8 +225,33 @@ No issues were encountered during browser testing.
 # LightHouse Testing
 
 ## Home page
+
+### Desktop
+
+![image](/static/testing/lh-home-desktop.png)
+
+### Mobile 
+
+![image](/static/testing/lh-home-mobile.png)
+
 ## Events page
+
+### Desktop
+
+![image](/static/testing/lh-event-desktop.png)
+
+### Mobile 
+
+![image](/static/testing/lh-event-mobile.png)
+
 ## Event Detail page
-## About page
+
+### Desktop
+
+![image](/static/testing/lh-event-detail-desktop.png)
+
+### Mobile 
+
+![image](/static/testing/lh-event-detail-mobile.png)
 
 Adam Voros | 2024
