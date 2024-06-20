@@ -151,50 +151,147 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
 # Features
 
 ## Navigation Bar
+- Logged Out
+![image](/static/readme/navbar-logged-out.png)
+- Logged in as user
+![image](/static/readme/navbar-logged-in-as-user.png)
+- Logged in as administrator
+![image](/static/readme/navbar-logged-in-as-admin.png)
 
 ## Footer
+- Logged out
+![image](/static/readme/footer-logged-out.png)
+- Logged in
+![image](/static/readme/footer-logged-in.png)
+- Logged in - Already subscribed to newsletter
+  - When user is subscribed to the newsletter, it's stored in session and the email field and button is hidden
+![image](/static/readme/footer-subscribed-in-session.png)
+
 
 ## Authentication 
-- Django allauth templates redesigned
+### Django allauth templates redesigned
+
+- Log In
+![image](/static/readme/login.png)
+- Log Out
+![image](/static/readme/log-out.png)
+- Register
+![image](/static/readme/register.png)
+- Change Email
+![image](/static/readme/change-email.png)
+- Change Password
+![image](/static/readme/change-password.png)
+
+
 
 ## Messages 
+- Upload event
+![image](/static/readme/event-uploaded.png)
+- Edit event
+![image](/static/readme/event-edited.png)
+- Delete event
+![image](/static/readme/event-deleted.png)
+- Ticket purchase successful
+![image](/static/readme/ticket-purchase.png)
+- Ticket purchase Issue
+![image](/static/readme/purchase-cancelled.png)
+- Subscribed to newsletter
+![image](/static/readme/subscribed.png)
+- Signed In
+![image](/static/readme/signed-in.png)
+- Signed Out
+![image](/static/readme/signed-out.png)
+- Registration - Confirmation email sent
+![image](/static/readme/email-confirmation.png)
+- Registration - Email Confirmed
+![image](/static/readme/confirmed-message.png)
+
 
 
 ## All Pages and Functionality
 
 ### Index (Home) Page
+- Displays featured events, which can be set on the create event page and later updated on the edit event page.
+- The "Tell me more" button navigates users to the event detail page.
+- The "Buy Tickets" button directs users to the login page (if not registered) or the buy ticket page.
+![image](/static/readme/index.png)
 
 ### Events Page
+- Shows all current and upcoming events, with filtering options by date, genre, and city. The page title updates based on the selected filters.
+- The "Tell me more" button navigates users to the event detail page.
+- The "Buy Tickets" button directs users to the login page (if not registered) or the buy ticket page.
+![image](/static/readme/events.png)
+
+### Filtered Events Page
+- Displays events based on selected filters, with the title reflecting the filter criteria.
+![image](/static/readme/filtered-events.png)
+
+### Events Page (no events)
+- Displays a message to the user when no events are available.
+![image](/static/readme/no-events.png)
 
 ### Event Detail Page
+- Shows a large image, event description, music link, and details about the event's date, venue, address, etc.
+- Includes a "Buy Ticket" button for ticket purchases.
+![image](/static/readme/event-details-1.png)
+![image](/static/readme/event-details-2.png)
 
-### About Page
-
-### Login Page
-
-### Register Page
+### About Page (with contact form)
+- Explains the purpose and creation of Subsurface.
+- Provides a contact form accessible to both registered and non-registered users.
+![image](/static/readme/about.png)
 
 ### My Tickets Page
+- Allows users to view their purchased tickets.
+- Displays QR codes for event entry.
+![image](/static/readme/my-tickets.png)
 
-### Change Email Page
-
-### Change Password Page
-
-### Sign Out Page
+### QR Code for Tickets (with carousel if more than 1 ticket)
+- Shows QR codes for purchased tickets. If more than one ticket is purchased, a carousel with incremented ticket numbers is available.
+- QR codes are static; dynamic QR code generation will be a future enhancement.
+![image](/static/readme/ticket-qr.png)
 
 ### Buy Ticket Page
+- Allows users to purchase tickets for events.
+- Prepopulates the username and adjusts the price based on the quantity selected.
+![image](/static/readme/buy-ticket.png)
+- Redirects users to the Stripe checkout page after entering details.
+![image](/static/readme/finalise-ticket.png)
+
 
 ### Create Event Page
+- Enables administrators to add new events.
+- Supports image uploads via Cloudinary, including options for web URL and direct image upload.
+- Uses a default image if no image is uploaded.
+![image](/static/readme/upload-1.png)
+![image](/static/readme/upload-2.png)
 
 ### Manage Events Page
+- Allows administrators to view and modify all current, upcoming, and past events.
+![image](/static/readme/manage.png)
+
 
 ### Delete Event Page
+- Allows administrators to delete events.
+![image](/static/readme/delete-1.png)
+![image](/static/readme/delete-2.png)
 
 ### Edit Event Page
-
+- Allows administrators to edit event details.
+- Supports image uploads only via image URL.
+![image](/static/readme/edit-1.png)
+![image](/static/readme/edit-2.png)
 
 # Data Model
-- image for db diagram
+
+- ContactMessage: Stores messages submitted through the contact form.
+- Event: Stores details about events, including name, genre, location, organiser, schedule, description, and ticket info.
+- Subscriber: Stores email addresses of newsletter subscribers and the date they subscribed.
+- Ticket: Stores ticket purchase information, including event and user references, quantity, and purchase date.
+- User: Stores user account details, including username, email, password, and profile information. (Created by [Django Allauth](https://docs.allauth.org/en/latest/))
+
+![image](/static/readme/subsurface-db-diagram.png)
+
 
 
 
