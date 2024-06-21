@@ -76,10 +76,10 @@
 
 | As a/an        | I want to be able to...                        | So that I can...                               |
 |----------------|-----------------------------------------------|------------------------------------------------|
-| Registered User | Easily register for an account                | Have a personal account to for keeping track of my tickets |
+| Not Registered User | Easily register for an account                | Have a personal account to for keeping track of my tickets |
 | Registered User | Easily log in or log out                      | Access my personal info                        |
 | Registered User | Easily recover my password                    | Access my account even if I've forgotten my password |
-| Registered User | Have a personalized user page for my tickets            | See my personal order history use my tickets when needed |
+| Registered User | Have a personalized user page for my tickets            | See my personal ticket order history when needed |
 | Registered User | Change my password                            | Ensure my account remains secure               |
 | Registered User | Change my email                               | Keep my contact information up-to-date         |
 | Registered User | Sign out                                      | Securely log out of my account                 |

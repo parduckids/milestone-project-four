@@ -73,7 +73,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # send emails to console
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# todo: live version --> send emails for real
+
+# send emails with SMTP
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp-relay.brevo.com')
@@ -116,7 +117,6 @@ INSTALLED_APPS = [
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 
-# todo : add env.py file later
 cloudinary.config(
     cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME')
 )
@@ -149,16 +149,7 @@ WSGI_APPLICATION = 'subsurface.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# local db
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# live db
-# todo: hide secret info
+# Live db
 
 DATABASES = {
     'default': {
@@ -195,13 +186,4 @@ except KeyError:
     pass  # Handle the missing 'MIDDLEWARE_CLASSES' issue gracefully
 
 
-
-# Testing
-# IS_TESTING = 'test' in sys.argv
-
-# if IS_TESTING:
-#     DATABASES['default'] = {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
 

@@ -48,7 +48,7 @@
 
 ### Registration and User Accounts
 
-- As a Registered User, I want to easily register for an account so that I can have a personal account for keeping track of my tickets.
+- As a Not Yet Registered User, I want to easily register for an account so that I can have a personal account for keeping track of my tickets.
     -The registration process is straightforward and user-friendly, requiring only essential information such as username, email address, and password. Upon successful registration, users can log in, buy tickets and use their tickets on the My Tickets page.
 
 - As a Registered User, I want to easily log in or log out so that I can access my personal info.
