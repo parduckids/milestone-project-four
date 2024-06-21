@@ -1,6 +1,6 @@
 # Subsurface
 ## Milestone Project 4 - Full Stack Development with Django
-  * [Live link](https://subsurface-03d2c6e34bd7.herokuapp.com/)
+  * <a href="https://subsurface-03d2c6e34bd7.herokuapp.com/" target="_blank">Live Link</a>
   * [Wireframes](/WIREFRAMES.md)
   * [GitHub Repository](https://github.com/parduckids/milestone-project-four)
   * [Testing docs](/TESTING.md)
