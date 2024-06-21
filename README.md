@@ -295,6 +295,17 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
 ![image](/static/readme/edit-1.png)
 ![image](/static/readme/edit-2.png)
 
+### Custom Error Pages
+- Custom designed pages added for common errors like 404 , 500 , 403, 400
+  ```
+  handler404 = 'subsurface.views.custom_404'
+  handler500 = 'subsurface.views.custom_500'
+  handler403 = 'subsurface.views.custom_403'
+  handler400 = 'subsurface.views.custom_400'
+  ```
+- As an example when a page not found, the 404 page is triggered:
+  ![image](/static/readme/404.png)
+
 # Data Model
 
 - ContactMessage: Stores messages submitted through the contact form.
