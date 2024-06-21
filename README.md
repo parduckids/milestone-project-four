@@ -307,7 +307,7 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
   ![image](/static/readme/404.png)
 
 
-### Newsletter Subscription:
+### Newsletter Subscription:
   - When a user subscribed to the newsletter they receive an email confirmation
   ![image](/static/readme/footer-logged-out.png)
   ![image](/static/readme/newsletter-confirmation.png)
