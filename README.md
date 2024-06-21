@@ -172,6 +172,7 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
 ![image](/static/readme/footer-logged-in.png)
 - Logged in - Already subscribed to newsletter
   - When user is subscribed to the newsletter, it's stored in session and the email field and button is hidden
+
 ![image](/static/readme/footer-subscribed-in-session.png)
 
 
@@ -271,7 +272,6 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
 
   ![image](/static/readme/sold-out.png)
 
-
 ### Create Event Page
 - Enables administrators to add new events.
 - Supports image uploads via Cloudinary, including options for web URL and direct image upload.
@@ -305,6 +305,13 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
   ```
 - As an example when a page not found, the 404 page is triggered:
   ![image](/static/readme/404.png)
+
+
+### Newsletter Subscription:
+  - When a user subscribed to the newsletter they receive an email confirmation
+  ![image](/static/readme/footer-logged-out.png)
+  ![image](/static/readme/newsletter-confirmation.png)
+
 
 # Data Model
 
