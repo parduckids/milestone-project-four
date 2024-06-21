@@ -222,6 +222,21 @@ No issues were encountered during browser testing.
 
 # Automated Testing
 
+I've made a series of automated tests for my Django project using the Python unittest framework. These tests address views, and models as needed, and are located in the tests.py files within each app.
+
+Although not every aspect of the project is covered by automated tests, I believe the combination of these tests and thorough manual testing provides a strong level of validation for the project's functionality.
+
+## All tests
+
+**25/25 PASS:**
+
+![image](/static/testing/automated-tests.png)
+
+## Coverage 
+![image](/static/testing/coverage-report.png)
+
+
+
 # LightHouse Testing
 
 ## Home page
