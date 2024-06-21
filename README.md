@@ -265,6 +265,12 @@ The website design of "Subsurface" embodies a sleek, dark, and edgy aesthetic, p
 - Redirects users to the Stripe checkout page after entering details.
 ![image](/static/readme/finalise-ticket.png)
 
+- Event Availability:
+  - When an event reaches its ticket capacity, a "Sold Out" message will be displayed.
+  - Users will be notified immediately if they attempt to purchase tickets for a sold-out event.
+
+  ![image](/static/readme/sold-out.png)
+
 
 ### Create Event Page
 - Enables administrators to add new events.
