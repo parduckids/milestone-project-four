@@ -15,7 +15,13 @@
 
 * "Subsurface" is developed as my Milestone Project 4 for the Code Institute's Diploma in Web Application Development course. This project incorporates a range of technologies, including HTML, CSS, JavaScript, Django, and PostgreSQL. Multiple Django apps were used to structure the application effectively, and Stripe integration was implemented to handle secure ticket transactions.
 ---
-- Please be aware that this web app was created as a portfolio project only, not for commercial or public use.
+## IMPORTANT INFORMATION
+
+- **Please be aware that this web app was created as a portfolio project only, not for commercial or public use.**
+
+- **The events displayed are sourced from other event sites and have been slightly modified to fit this webapp's theme.**
+
+- **All payments are test payments only and can be processed using test card details. No real transactions will occur.**
 
 ## Contents
 

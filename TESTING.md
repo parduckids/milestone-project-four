@@ -219,6 +219,9 @@ No issues were encountered during browser testing.
 ![image](/static/testing/buy-ticket-3.png)
 ![image](/static/testing/buy-ticket-4.png)
 
+### To test Stripe the test payment system I used:
+
+- [Test card details provided by stripe](https://docs.stripe.com/testing?locale=en-GB)
 
 # Automated Testing
 
@@ -268,5 +271,7 @@ Although not every aspect of the project is covered by automated tests, I believ
 ### Mobile 
 
 ![image](/static/testing/lh-event-detail-mobile.png)
+
+
 
 Adam Voros | 2024
